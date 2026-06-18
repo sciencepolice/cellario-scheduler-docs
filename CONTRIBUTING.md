@@ -29,6 +29,7 @@ Archbee points back to GitHub for hosting:
 ```
 
 Notes:
+
 - Raw URLs pin to the `main` branch — an image change goes live when it merges to `main`.
 - Keep filenames lowercase-kebab-case. Put each image under its section's subfolder.
 

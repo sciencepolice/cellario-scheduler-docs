@@ -1,0 +1,13 @@
+# markdownlint config for the docs repo.
+config:
+  # Line length: impractical for docs (raw GitHub image URLs can't be wrapped).
+  MD013: false
+  # Allow inline HTML — Archbee pages and headerincludes may use it.
+  MD033: false
+  # First line need not be a top-level heading (section pages start with frontmatter-free H1 anyway, but be lenient).
+  MD041: false
+
+# Files that are Archbee structural config, not prose — don't lint them.
+ignores:
+  - "docs/summary.md"   # nav tree: intentionally multiple H1s, tight formatting
+  - "docs/config.md"    # use{file=...} code-embed declarations (HTML comments)

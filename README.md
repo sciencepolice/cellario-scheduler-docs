@@ -19,11 +19,11 @@ and holds the Archbee sync configuration.
 
 Three top-level sections, each with child folders:
 
-| Section      | Path                | Contents                                  |
-| ------------ | ------------------- | ----------------------------------------- |
-| User Guide   | `docs/user-guide/`  | End-user documentation                    |
-| API          | `docs/api/`         | API reference + C# samples (`samples/`)   |
-| Scripting    | `docs/scripting/`   | Scripting docs + Python samples (`samples/`) |
+| Section    | Path               | Contents                                     |
+| ---------- | ------------------ | -------------------------------------------- |
+| User Guide | `docs/user-guide/` | End-user documentation                       |
+| API        | `docs/api/`        | API reference + C# samples (`samples/`)      |
+| Scripting  | `docs/scripting/`  | Scripting docs + Python samples (`samples/`) |
 
 Images: `docs/assets/images/<section>/`.
 
