@@ -1,0 +1,36 @@
+name: validate-docs
+
+# Validation only — Archbee handles publishing via its own GitHub hook on push to main.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint markdown
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            docs/**/*.md
+            *.md
+
+  links:
+    name: Link & image check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links and image URLs (incl. raw.githubusercontent.com)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Fail the job on broken links/images. Verifies raw GitHub image URLs resolve.
+          args: --no-progress --verbose "docs/**/*.md" "*.md"
+          fail: true

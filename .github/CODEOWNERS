@@ -1,0 +1,14 @@
+# Review gates per section. Replace the placeholder teams/users with real owners.
+# See https://docs.github.com/articles/about-code-owners
+
+# Repo-wide default
+*                       @HRB-SW/docs-maintainers
+
+# Per-section owners
+/docs/user-guide/       @HRB-SW/docs-maintainers
+/docs/api/              @HRB-SW/docs-maintainers
+/docs/scripting/        @HRB-SW/docs-maintainers
+
+# Sync config changes warrant extra scrutiny
+/archbee.yaml           @HRB-SW/docs-maintainers
+/docs/summary.md        @HRB-SW/docs-maintainers

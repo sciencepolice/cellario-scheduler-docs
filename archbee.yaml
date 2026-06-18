@@ -1,0 +1,14 @@
+# Archbee GitHub sync configuration.
+# Docs live under /docs; summary.md drives the left-nav; assets are GitHub-hosted images.
+# Sync is one-way (GitHub -> Archbee) and fires on every push to the synced branch.
+root: /docs
+structure:
+  summary: summary.md
+assets: assets
+publishspace: true
+
+# Enable later to publish whole .cs/.py files as their own browsable pages.
+# Until then, embed source inline with use{file="..."} (see docs/config.md).
+# shadowdocs:
+#   - api/samples
+#   - scripting/samples
