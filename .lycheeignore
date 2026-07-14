@@ -8,6 +8,13 @@ operations-examples\.md
 deployment/https-configuration\.md
 Cellario_Client_Event_Subscription_Primer\.md
 
+# Scripting example scripts referenced by the Scripting API pages but not yet added
+# to docs/scripting/samples/. The relative links are intentionally kept; remove each
+# line below once the matching sample file lands.
+Run_Data_Next\.cs
+Log_Message\.cs
+Clean_Washer_With_Plate\.cs
+
 # Cellario.Client is not (yet) published to the public NuGet gallery, so this
 # intended URL 404s. Remove once the package is public.
 https://www\.nuget\.org/packages/Cellario\.Client/
@@ -15,3 +22,9 @@ https://www\.nuget\.org/packages/Cellario\.Client/
 # OpenAPI spec download link: pins to raw main, so it only resolves after this
 # change merges to main. Remove this line once merged.
 CellarioScheduler-4\.5-API\.json
+
+# Scripting doc images: referenced by raw.githubusercontent.com URLs per the
+# CONTRIBUTING image convention, but the repo is currently private so raw URLs
+# 404 for the unauthenticated CI checker (same situation as the OpenAPI spec
+# above). Remove once the repo is public.
+raw\.githubusercontent\.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/
