@@ -160,7 +160,7 @@ The API supports both HTTP and HTTPS connections. For production deployments, HT
 
 ## Next Steps
 
-- **New to REST APIs?** Start with our [Examples](examples.md) section
+- **New to REST APIs?** Start with our [Examples](examples-overview.md) section
 - **Need Authentication?** Review the [Authentication Guide](authentication.md)
 - **Want Real-time Updates?** Check out [Events](events.md)
 - **Using .NET?** See the [Client SDK Documentation](../client-sdk/)

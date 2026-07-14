@@ -11,3 +11,7 @@ Cellario_Client_Event_Subscription_Primer\.md
 # Cellario.Client is not (yet) published to the public NuGet gallery, so this
 # intended URL 404s. Remove once the package is public.
 https://www\.nuget\.org/packages/Cellario\.Client/
+
+# OpenAPI spec download link: pins to raw main, so it only resolves after this
+# change merges to main. Remove this line once merged.
+CellarioScheduler-4\.5-API\.json

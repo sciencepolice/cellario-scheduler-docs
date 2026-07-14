@@ -23,7 +23,11 @@ This provides:
 
 ### OpenAPI Specification Files
 
-Download the complete OpenAPI specification:
+Download a bundled copy of the complete OpenAPI specification, no running server required:
+
+- [Cellario Scheduler 4.5 API (OpenAPI 3.0, JSON)](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/api/CellarioScheduler-4.5-API.json)
+
+You can also pull the live spec directly from your own Cellario server:
 
 ```
 http://{cellario-server}:8444/docs/v1/swagger.json
@@ -229,5 +233,5 @@ curl -X GET http://localhost:8444/protocols \
 
 - [Overview →](overview.md)
 - [Authentication →](authentication.md)
-- [Examples →](examples.md)
+- [Examples →](examples-overview.md)
 - [Glossary →](glossary.md)
