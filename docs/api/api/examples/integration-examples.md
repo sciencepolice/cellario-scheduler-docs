@@ -616,10 +616,10 @@ Always implement comprehensive error handling:
 
 - Review [Error Handling](error-handling.md) patterns
 - Explore specific operation examples (protocols, orders, devices)
-- Consider using the [Cellario Client SDK](../../client-sdk/README.md) for production applications
+- Consider using the [Cellario Client SDK](../../client-sdk/01-overview-and-quick-start.md) for production applications
 
 ## Related Documentation
 
 - [Basic Operations](basic-operations.md) - Authentication and connectivity
 - [Error Handling](error-handling.md) - Error scenarios and solutions
-- [Client SDK](../../client-sdk/README.md) - Recommended production approach
+- [Client SDK](../../client-sdk/01-overview-and-quick-start.md) - Recommended production approach

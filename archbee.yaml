@@ -7,8 +7,12 @@ structure:
 assets: assets
 publishspace: true
 
-# Enable later to publish whole .cs/.py files as their own browsable pages.
-# Until then, embed source inline with use{file="..."} (see docs/config.md).
-# shadowdocs:
-#   - api/samples
-#   - scripting/samples
+# Shadow docs are synced and indexed for the Ask-AI assistant but NOT shown on the
+# published portal nav. Paths are relative to `root` (/docs).
+shadowdocs:
+  - api/api/scripting-api-reference.md
+
+# Sample source folders (docs/api/samples, docs/scripting/samples) are intentionally
+# NOT shadow-docs — they stay in the repo for inline use{file="..."} embeds only
+# (see docs/config.md). Archbee has no ignore key, so anything added here is synced
+# recursively; enumerate specific paths rather than whole sample trees.

@@ -535,4 +535,4 @@ The system provides comprehensive monitoring:
 
 - [Overview →](overview.md)
 - [Authentication →](authentication.md)
-- [Examples →](examples.md)
+- [Examples →](examples-overview.md)
