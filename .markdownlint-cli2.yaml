@@ -9,7 +9,9 @@ config:
   # Content is generated/copied from source repos; these cosmetic style rules recur
   # throughout and can't be durably fixed here, so don't block the sync on them.
   # markdownlint stays enabled for everything else (genuinely broken structure).
+  MD001: false   # heading-increment jumps (Archbee exports skip levels within a section)
   MD024: false   # duplicate headings (e.g. repeated "### Endpoint" per example)
+  MD025: false   # multiple H1s: exported reference pages carry a frontmatter title plus one H1 per property/method
   MD026: false   # trailing punctuation in headings
   MD029: false   # ordered-list item numbering style
   MD031: false   # blanks around fenced code blocks
