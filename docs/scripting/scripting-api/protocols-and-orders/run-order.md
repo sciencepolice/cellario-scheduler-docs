@@ -11,7 +11,7 @@ createdAt: Wed Aug 02 2023 15:38:59 GMT+0000 (Coordinated Universal Time)
 CurrentRun is also preserved as a property of CurrentPlate (api.CurrentPlate.CurrentRun) to remain backward-compatible.
 :::
 
-See the [CurrentRun Property](<../Systems and Inventory/Plate.md>) section of Plate for more information.
+See the [CurrentRun Property](<../systems-and-inventory/plate.md>) section of Plate for more information.
 
 :::hint{type="info"}
 `api.CurrentRun` is of type `IScriptingRunOrder2`, which extends `IScriptingRunOrder` and additionally exposes `IScriptingProtocol Protocol { get; }` (accessed as `api.CurrentRun.Protocol`). The run order also provides `bool? IsMatch(IScriptingRunOrder other)`, mirroring the `IsMatch` pattern documented elsewhere for plates and steps.
@@ -353,4 +353,4 @@ During the Cellario run, the script iterates the deck load/unload sequences for 
 
 # Protocol Object
 
-See the [Protocol Properties and Parameters](<../Systems and Inventory/Plate.md>) section of Plate for information about the collections attached to the Protocol object.
+See the [Protocol Properties and Parameters](<../systems-and-inventory/plate.md>) section of Plate for information about the collections attached to the Protocol object.

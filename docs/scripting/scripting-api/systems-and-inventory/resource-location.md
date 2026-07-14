@@ -35,7 +35,7 @@ During the Cellario order, the Spin operation is completed and then the script i
 
 IScriptingResource
 
-See the section [Resource](./Resource.md) for Resource properties and methods.
+See the section [Resource](./resource.md) for Resource properties and methods.
 
 ***
 
@@ -47,7 +47,7 @@ The ResourceName property is the name of the resource to which the resource loca
 
 ## Syntax Example
 
-See the example in the section Storage Location, [IsEnabled Property](./StorageLocation.md).
+See the example in the section Storage Location, [IsEnabled Property](./storage-location.md).
 
 ## Property Type
 

@@ -41,3 +41,32 @@
 ## Scripting
 
 - [Overview](scripting/index.md)
+- [Introduction](scripting/introduction/overview.md)
+- [Script Structure](scripting/introduction/script-structure.md)
+- [Library Management](scripting/introduction/library-management.md)
+- [Hello World](scripting/base-tutorials/hello-world.md)
+- [Adding Scripts to the Script Library](scripting/base-tutorials/adding-scripts-to-the-script-library.md)
+- [Using Scripts from the Script Library](scripting/base-tutorials/using-scripts-from-script-library.md)
+- [Configuring Autorecovery Scripts](scripting/base-tutorials/configuring-autorecovery-scripts.md)
+- [Referencing Dependencies](scripting/advanced-topics/referencing-dependencies.md)
+- [Glossary](scripting/glossary.md)
+
+## Scripting API
+
+- [API Overview](scripting/scripting-api/general/api-overview.md)
+- [Fundamentals](scripting/scripting-api/general/fundamentals.md)
+- [Data](scripting/scripting-api/general/data.md)
+- [Messaging](scripting/scripting-api/general/messaging.md)
+- [Resource Allocation](scripting/scripting-api/general/resource-allocation.md)
+- [RunOrder](scripting/scripting-api/protocols-and-orders/run-order.md)
+- [Protocol Thread](scripting/scripting-api/protocols-and-orders/protocol-thread.md)
+- [Protocol Steps](scripting/scripting-api/protocols-and-orders/protocol-steps.md)
+- [Remaining Protocol Steps](scripting/scripting-api/protocols-and-orders/remaining-protocol-steps.md)
+- [Device Operation](scripting/scripting-api/protocols-and-orders/device-operation.md)
+- [Script Parameters](scripting/scripting-api/protocols-and-orders/script-parameters.md)
+- [Resource](scripting/scripting-api/systems-and-inventory/resource.md)
+- [Resource Location](scripting/scripting-api/systems-and-inventory/resource-location.md)
+- [Storage Location](scripting/scripting-api/systems-and-inventory/storage-location.md)
+- [Labware](scripting/scripting-api/systems-and-inventory/labware.md)
+- [Plate](scripting/scripting-api/systems-and-inventory/plate.md)
+- [System Control](scripting/scripting-api/systems-and-inventory/system-control.md)

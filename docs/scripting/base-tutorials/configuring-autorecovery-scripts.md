@@ -7,7 +7,7 @@ createdAt: Wed Aug 02 2023 15:38:59 GMT+0000 (Coordinated Universal Time)
 
 ::::WorkflowBlock
 :::WorkflowBlockItem
-Follow the procedure in [Adding Scripts to the Script Library](<./Adding Scripts to the Script Library.md>).
+Follow the procedure in [Adding Scripts to the Script Library](<./adding-scripts-to-the-script-library.md>).
 :::
 
 :::WorkflowBlockItem

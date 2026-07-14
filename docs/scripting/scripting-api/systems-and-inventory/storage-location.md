@@ -173,7 +173,7 @@ The position, stack, and resource name for the storage location are displayed in
 
 ## Property Type
 
-IScriptingResource (See the section [Resource](./Resource.md))
+IScriptingResource (See the section [Resource](./resource.md))
 
 ***
 
