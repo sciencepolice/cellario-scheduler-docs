@@ -88,7 +88,6 @@ public override void Execute(IScriptingApi api)
 During the Cellario run, the script finds a handle to the resource *SteriStore 1*, then finds
 an available location. Using the method IsEnabled, the location is confirmed to be enabled.
 
-
 ## Property Type
 
 Nullable Boolean

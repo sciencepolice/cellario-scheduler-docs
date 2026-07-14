@@ -47,4 +47,3 @@ In this example, the operations for resource *Bravo 1* are shown.
 After typing `api.Resources[“resource name”].Operations[“operation name”]` , Intellisense  displays a list of all the operation parameters associated with the operation.
 
 ![Intellisense displaying operation parameters](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense4.jpg)
-

@@ -33,7 +33,7 @@ namespace Customer.Scripting
 During the Cellario order, the script writes out the name of the current protocol to the
 Cellario message log. In this example, the protocol is called *CurrentProtocol*.
 
-![](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/protocolnameproperty.png)
+![Current protocol name written to the Cellario message log](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/protocolnameproperty.png)
 
 ## Property Type
 
@@ -96,4 +96,3 @@ All Protocol Port property types are *string*.
 - InputPortTag
 - OutputPortName
 - OutputPortTag
-

@@ -671,4 +671,3 @@ ScriptingPlateStatus, which is an enum with these possible values:
 - NotStarted
 - Active
 - Finished
-

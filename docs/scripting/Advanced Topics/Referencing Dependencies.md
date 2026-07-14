@@ -20,4 +20,3 @@ using System.Windows.Forms;
 :::hint{type="warning"}
 External assemblies are **not** visible to Intellisense in the script editor and are not exported/imported with the script.
 :::
-

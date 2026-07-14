@@ -101,4 +101,3 @@ To remove the claim, select the resource from the resources array and then call 
 ```csharp
 api.Resources["resource name"].Release();
 ```
-

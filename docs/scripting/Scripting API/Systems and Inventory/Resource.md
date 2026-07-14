@@ -298,4 +298,3 @@ In addition to device resources, two marker resource families identify specializ
 - **IScriptingLidHotel** — a lid hotel resource
 
 Both are `IScriptingResource` and expose the same base resource members documented on this page (such as `Name`, `IsEnabled`, `ResourceType`, and `Operations`). Their distinct interface types let scripts recognize a resource's role when iterating `api.Resources`.
-

@@ -121,8 +121,3 @@ During the run, Cellario writes "Hello World" to the message log.
 !["Hello World" written to Message log](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep21.png)
 :::
 :::::
-
-
-
-
-

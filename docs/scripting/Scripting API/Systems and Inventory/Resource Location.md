@@ -29,7 +29,6 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario order, the Spin operation is completed and then the script is executed before the plate is removed from the MicroSpin resource. The script writes the current plate’s location to the Cellario message log.
 
-
 ::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourceproperty2.png" size="88" width="578" height="66" position="center" showCaption="false"}
 
 ## Property Type

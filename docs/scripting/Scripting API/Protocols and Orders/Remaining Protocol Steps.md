@@ -118,7 +118,7 @@ there is a Read operation with the assigned resource *InCell\_01*.
 
 During the Cellario order, the script displays the remaining operations steps and the operation parameters for each step.
 
-![](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/operationparametersproperty.png)
+![Remaining operation steps and their operation parameters](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/operationparametersproperty.png)
 
 ## Property Type
 
@@ -404,9 +404,9 @@ You should modify only these types of operations by scripting.
 var steps = api.CurrentPlate.RemainingSteps.ToList();
 var loopCount = steps.FirstOrDefault(a => a.StepName == "Loop End").NumberOfLoops;
 if (loopCount < 2)
-   	{
+    {
        steps.FirstOrDefault(a => a.StepName == "Loop End").NumberOfLoops = 5;
-   	} 
+    }
 ```
 
 In this example, a script with a given plate receives the remaining steps, finds the first Loop End operation, and then gets the current value for NumberOfLoops. If the value is less than 2, then the script sets it to 5.

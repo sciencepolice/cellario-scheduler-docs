@@ -47,4 +47,3 @@ Double-clicking the script operation icon displays the content of the script.
 Click **Save** to save the protocol.
 :::
 ::::
-

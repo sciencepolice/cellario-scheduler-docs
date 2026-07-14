@@ -61,4 +61,3 @@ Click **Compile** to check the syntax and compile the script.
 Click **Save** to save the script, and then close the *Script Library* window.
 :::
 ::::
-

@@ -14,4 +14,3 @@ Follow the procedure in [Adding Scripts to the Script Library](<./Adding Scripts
 See the *Cellario Operator Guide* (for v3.6 or earlier) or the *Cellario Online Help* (for v4.0 or later) for information and instructions on auto-recovery setup and configuring auto-recovery scripts.
 :::
 ::::
-

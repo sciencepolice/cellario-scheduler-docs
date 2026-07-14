@@ -52,8 +52,7 @@ public override void AllocateResources(IScriptingApiAllocation api)
 
 During the Cellario run, a message is displayed in the Cellario message window.
 
-
-![](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/nameproperty.jpg)
+![Resource name displayed in the Cellario message window](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/nameproperty.jpg)
 
 ## Property Type
 

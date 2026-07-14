@@ -74,7 +74,7 @@ The Data property is a persistent data storage mechanism for per-plate, per-run 
 
 ## Syntax Example
 
-See example scripts [Human-readable Label](#) and [Run Data Next](../../samples/csharp-scripts/examples/Run_Data_Next.cs).
+See example scripts Human-readable Label and [Run Data Next](../../samples/csharp-scripts/examples/Run_Data_Next.cs).
 
 ## Property Type
 

@@ -22,8 +22,6 @@ Cellario's scripting engine targets .NET 8 and supports modern C# syntax. There 
 In Cellario 4.1 Support was added for Python scripting so users can now select in Cellario if they would like to use Python or C#. This decision is made at the script level so you can use a mix of Python and C# scripts within a single protocol.
 :::
 
-
-
 # Online Resources
 
 The MSDN and Microsoft Virtual Academy have some great free online courses:

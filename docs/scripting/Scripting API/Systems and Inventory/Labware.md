@@ -1,7 +1,7 @@
 ---
 title: Labware
 description: This document provides information about the properties of labware including ThicknessTopToWellBottom, StackedHeight, Name, FillVolume, Height, GripHeight, TotalVolume, and WellCount in the api.AllLabware class. Learn about the distance between the well b
-docTags: 
+docTags:
 createdAt: Wed Aug 02 2023 15:38:59 GMT+0000 (Coordinated Universal Time)
 ---
 
@@ -37,7 +37,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the ThicknessTopToWellBottom for the Matrix\_384\_lidded plate is displayed in the Cellario message window.
 
-![](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/thicknesstoptowellbottomproperty2.jpg)
+![ThicknessTopToWellBottom displayed in the Cellario message window](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/thicknesstoptowellbottomproperty2.jpg)
 
 ## Property Type
 
@@ -197,7 +197,7 @@ The GripHeight is the height at which the robot grips the microplate, measured i
 
 #### Syntax Example
 
-In this example “Matrix_384_Lidded” is be selected from the list of labware and stored in the variable called *labware*. 
+In this example “Matrix_384_Lidded” is be selected from the list of labware and stored in the variable called *labware*.
 If the “Matrix_384_Lidded” was present within the AllLabware list, the property value is displayed; otherwise, an error is displayed.
 
 ```csharp
