@@ -1,13 +1,14 @@
 # Archbee GitHub sync configuration.
-# Docs live under ./docs. Archbee uses the GitBook-style readme + summary pair:
-#   readme  -> the space home page (index.md)
-#   summary -> summary.md, which drives the left-nav order and grouping
+# Layout mirrors Archbee's canonical example (github.com/dragosbulugean/slate):
+# a GitBook-style readme + Summary pair drives the space.
+#   readme  -> Introduction.md (space home page)
+#   summary -> Summary.md (bulleted nav tree; drives left-nav order and grouping)
 #   assets  -> folder for GitHub-hosted images
 # Sync is one-way (GitHub -> Archbee) and fires on every push to the synced branch.
 root: ./docs
 structure:
-  readme: index.md
-  summary: summary.md
+  readme: Introduction.md
+  summary: Summary.md
   assets: assets
 publishspace: true
 

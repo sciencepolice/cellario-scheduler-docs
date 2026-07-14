@@ -7,7 +7,7 @@ and holds the Archbee sync configuration.
 
 ## How it works
 
-- Content lives under [`docs/`](docs/). [`docs/summary.md`](docs/summary.md) defines the
+- Content lives under [`docs/`](docs/). [`docs/Summary.md`](docs/Summary.md) defines the
   left-nav tree.
 - [`archbee.yaml`](archbee.yaml) tells Archbee where the docs root, nav file, and assets
   folder are.

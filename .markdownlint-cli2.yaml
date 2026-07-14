@@ -21,5 +21,5 @@ config:
 
 # Files that are Archbee structural config, not prose — don't lint them.
 ignores:
-  - "docs/summary.md"   # nav tree: intentionally multiple H1s, tight formatting
+  - "docs/Summary.md"   # Archbee nav tree (GitBook-style bulleted TOC), not prose
   - "docs/config.md"    # use{file=...} code-embed declarations (HTML comments)
