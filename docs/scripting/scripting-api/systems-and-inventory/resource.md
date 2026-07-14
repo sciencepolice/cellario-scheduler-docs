@@ -222,7 +222,7 @@ Example Cellario output showing all the operation for a resource called *Bravo 1
 
 A dictionary of ScriptedDeviceOperation where the dictionary key is the operation name.
 
-See the section [Device Operation](<../Protocols and Orders/Device Operation.md>) for the properties and method.
+See the section [Device Operation](<../protocols-and-orders/device-operation.md>) for the properties and method.
 
 ***
 

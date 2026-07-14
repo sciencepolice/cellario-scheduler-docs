@@ -41,7 +41,7 @@ namespace Customer.Scripting
 
 ## Property Type
 
-IScriptingResourceLocation. See the section [Resource](./Resource.md).
+IScriptingResourceLocation. See the section [Resource](./resource.md).
 
 ***
 
@@ -162,7 +162,7 @@ During the Cellario order, the Spin operation is completed and then the script i
 
 ## Property Type
 
-IScriptingResourceLocation. See the section [Resource](./Resource.md).
+IScriptingResourceLocation. See the section [Resource](./resource.md).
 
 ***
 
@@ -174,7 +174,7 @@ The CurrentProtocol property provides a handle to the current protocol.
 
 ## Syntax Example
 
-See the section [Protocol Thread](<../Protocols and Orders/Protocol Thread.md>) for examples of how to use CurrentProtocol.
+See the section [Protocol Thread](<../protocols-and-orders/protocol-thread.md>) for examples of how to use CurrentProtocol.
 
 ## Property Type
 
@@ -257,7 +257,7 @@ The new api.CurrentRun object is similar to the api.CurrentPlate.CurrentRun but 
     var runPlateList = api.GetPlates();
 ```
 
-See the section [RunOrder](<../Protocols and Orders/RunOrder.md>) for complete information on CurrentRun properties and methods.
+See the section [RunOrder](<../protocols-and-orders/run-order.md>) for complete information on CurrentRun properties and methods.
 
 ***
 
@@ -284,7 +284,7 @@ This example script displays the name of the current operation in the Cellario m
 
 ## Property Type
 
-IScriptingProtocolRemainingStep (See the section [Remaining Protocol Steps](<../Protocols and Orders/Remaining Protocol Steps.md>))
+IScriptingProtocolRemainingStep (See the section [Remaining Protocol Steps](<../protocols-and-orders/remaining-protocol-steps.md>))
 
 ***
 
@@ -314,7 +314,7 @@ a message displaying the name of the storage resource and the location of the pl
 
 ## Property Type
 
-IScriptingStorageLocation (See the section [StorageLocation](./StorageLocation.md))
+IScriptingStorageLocation (See the section [StorageLocation](./storage-location.md))
 
 ***
 
@@ -375,7 +375,7 @@ if an ending location has been defined.
 
 ## Property Type
 
-IScriptingStorageLocation (See the section [StorageLocation](./StorageLocation.md))
+IScriptingStorageLocation (See the section [StorageLocation](./storage-location.md))
 
 ***
 
@@ -434,7 +434,7 @@ In this example protocol after the script operation, there are Dispense, Read, a
 
 IScriptingProtocolRemainingSteps
 
-See the section [Remaining Protocol Steps](<../Protocols and Orders/Remaining Protocol Steps.md>) for the complete list of RemainingSteps properties and methods.
+See the section [Remaining Protocol Steps](<../protocols-and-orders/remaining-protocol-steps.md>) for the complete list of RemainingSteps properties and methods.
 
 ## Add Steps to Plate
 
@@ -637,7 +637,7 @@ During the Cellario run, this script displays the starting location and resource
 
 ## Property Type
 
-IScriptingStorageLocation (See the section [StorageLocation](./StorageLocation.md))
+IScriptingStorageLocation (See the section [StorageLocation](./storage-location.md))
 
 ***
 
