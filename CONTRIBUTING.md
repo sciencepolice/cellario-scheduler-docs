@@ -12,7 +12,7 @@ right section here and open a pull request. Merging to `main` publishes to Archb
    - `docs/user-guide/<child-folder>/`
    - `docs/api/<child-folder>/` — C# samples go in `docs/api/samples/`
    - `docs/scripting/<child-folder>/` — Python samples go in `docs/scripting/samples/`
-3. **Add the page to [`docs/summary.md`](docs/summary.md)** so it shows up in the nav.
+3. **Add the page to [`docs/Summary.md`](docs/Summary.md)** so it shows up in the nav.
    A page that isn't linked there won't appear in the site's left navigation.
 4. Open a PR. CI (`.github/workflows/validate.yml`) lints markdown and checks that links
    and image URLs resolve. Fix anything it flags. (Embedded `use{file=...}` paths are not
@@ -47,7 +47,7 @@ Declarations can also be collected in [`docs/config.md`](docs/config.md). This k
 shown code in sync with the actual source file on every sync.
 
 > To instead publish a whole file as its own page, ask a maintainer to enable `shadowdocs`
-> in `archbee.yaml` — deferred until there's demand for browsable source.
+> in `.archbee.yaml` — deferred until there's demand for browsable source.
 
 ## Conventions
 

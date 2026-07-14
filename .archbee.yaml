@@ -1,14 +1,19 @@
 # Archbee GitHub sync configuration.
-# Docs live under /docs; summary.md drives the left-nav; assets are GitHub-hosted images.
+# Layout mirrors Archbee's canonical example (github.com/dragosbulugean/slate):
+# a GitBook-style readme + Summary pair drives the space.
+#   readme  -> Introduction.md (space home page)
+#   summary -> Summary.md (bulleted nav tree; drives left-nav order and grouping)
+#   assets  -> folder for GitHub-hosted images
 # Sync is one-way (GitHub -> Archbee) and fires on every push to the synced branch.
-root: /docs
+root: ./docs
 structure:
-  summary: summary.md
-assets: assets
+  readme: Introduction.md
+  summary: Summary.md
+  assets: assets
 publishspace: true
 
 # Shadow docs are synced and indexed for the Ask-AI assistant but NOT shown on the
-# published portal nav. Paths are relative to `root` (/docs).
+# published portal nav. Paths are relative to `root` (./docs).
 shadowdocs:
   - api/api/scripting-api-reference.md
 
