@@ -6,30 +6,30 @@ This section provides practical examples of common Cellario API operations organ
 
 Start with the basic operations to understand authentication and connectivity:
 
-→ **[Basic Operations](basic-operations.md)** - Health checks and authentication  
-→ **[Error Handling](error-handling.md)** - Common error scenarios and solutions
+→ **[Basic Operations](examples/basic-operations.md)** - Health checks and authentication  
+→ **[Error Handling](examples/error-handling.md)** - Common error scenarios and solutions
 
 ## API Operations by Domain
 
 ### Core Laboratory Operations
 
-→ **[Protocol Examples](protocol-examples.md)** - Create, manage, and query protocols  
-→ **[Order Examples](order-examples.md)** - Create and manage laboratory orders  
-→ **[Device Examples](device-examples.md)** - Control and monitor laboratory devices
+→ **[Protocol Examples](examples/protocol-examples.md)** - Create, manage, and query protocols  
+→ **[Order Examples](examples/order-examples.md)** - Create and manage laboratory orders  
+→ **[Device Examples](examples/device-examples.md)** - Control and monitor laboratory devices
 
 ### System Management
 
-→ **[System Examples](system-examples.md)** - System information and configuration  
-→ **[Resource Examples](resource-examples.md)** - Manage laboratory resources  
-→ **[Inventory Examples](inventory-examples.md)** - Track and manage inventory
+→ **[System Examples](examples/system-examples.md)** - System information and configuration  
+→ **[Resource Examples](examples/resource-examples.md)** - Manage laboratory resources  
+→ **[Inventory Examples](examples/inventory-examples.md)** - Track and manage inventory
 
 ### Real-time Features
 
-→ **[Events Examples](events-examples.md)** - Subscribe to and handle real-time events
+→ **[Events Examples](examples/events-examples.md)** - Subscribe to and handle real-time events
 
 ## Integration Guides
 
-→ **[Integration Examples](integration-examples.md)** - Complete workflow examples in PowerShell, Python, and C#
+→ **[Integration Examples](examples/integration-examples.md)** - Complete workflow examples in PowerShell, Python, and C#
 
 ## Tools and Languages Covered
 

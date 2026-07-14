@@ -1,0 +1,13 @@
+# lychee link-checker ignore list (regex per line, matched against each link URL).
+
+# --- TODO: docs referenced by content but not yet copied from the source repos ---
+# Decision pending on whether these get added or the references removed. The links
+# are intentionally kept in the content; remove the matching line below once the
+# file lands (or once the reference is dropped).
+operations-examples\.md
+deployment/https-configuration\.md
+Cellario_Client_Event_Subscription_Primer\.md
+
+# Cellario.Client is not (yet) published to the public NuGet gallery, so this
+# intended URL 404s. Remove once the package is public.
+https://www\.nuget\.org/packages/Cellario\.Client/
