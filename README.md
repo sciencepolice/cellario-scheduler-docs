@@ -9,7 +9,7 @@ and holds the Archbee sync configuration.
 
 - Content lives under [`docs/`](docs/). [`docs/Summary.md`](docs/Summary.md) defines the
   left-nav tree.
-- [`archbee.yaml`](archbee.yaml) tells Archbee where the docs root, nav file, and assets
+- [`.archbee.yaml`](.archbee.yaml) tells Archbee where the docs root, nav file, and assets
   folder are.
 - Sync is **one-way: GitHub → Archbee**. Every push to `main` triggers a sync; nobody
   edits in Archbee directly.

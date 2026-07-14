@@ -47,7 +47,7 @@ Declarations can also be collected in [`docs/config.md`](docs/config.md). This k
 shown code in sync with the actual source file on every sync.
 
 > To instead publish a whole file as its own page, ask a maintainer to enable `shadowdocs`
-> in `archbee.yaml` — deferred until there's demand for browsable source.
+> in `.archbee.yaml` — deferred until there's demand for browsable source.
 
 ## Conventions
 
