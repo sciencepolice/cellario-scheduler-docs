@@ -29,7 +29,7 @@ public override void Execute(IScriptingApi api)
 
 Cellario output shows the device state for the device claimed by the current plate.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/devicestateproperty.png" size="68" width="441" height="63" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/devicestateproperty.png" size="68" width="441" height="63" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -106,7 +106,7 @@ public override void Execute(IScriptingApi api)
 
 This example script iterates all the resources displaying the resource name and IsEnabled value.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/isenabledproperty.png" size="88" width="592" height="81" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/isenabledproperty.png" size="88" width="592" height="81" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -132,7 +132,7 @@ public override void Execute(IScriptingApi api)
 
 Example Cellario output showing the error state of the resource claimed by the current plate:
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/iserroredproperty.png" size="62" width="409" height="64" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/iserroredproperty.png" size="62" width="409" height="64" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -158,7 +158,7 @@ public override void Execute(IScriptingApi api)
 }
 ```
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/issimulatedproperty.png" size="88" width="622" height="142" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/issimulatedproperty.png" size="88" width="622" height="142" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -187,7 +187,7 @@ public override void Execute(IScriptingApi api)
 This example script iterates all the scripting resources and displayed the resource name
 in the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resource-nameproperty.png" size="82" width="568" height="101" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resource-nameproperty.png" size="82" width="568" height="101" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -212,7 +212,7 @@ foreach(var opp in api.Resources["Bravo 1"].Operations.Keys)
 
 Example Cellario output showing all the operation for a resource called *Bravo 1*:
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/operationsproperty.png" size="62" width="425" height="145" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/operationsproperty.png" size="62" width="425" height="145" position="center" showCaption="false"}
 
 :::hint{type="info"}
 `resource.Operations` is a `DeviceOperationDictionary`. Its indexer automatically creates a named `ScriptedDeviceOperation` on first access if one does not already exist for that key. As a result, `resource.Operations["Spin"]` never returns null and never throws a KeyNotFound exception — the operation is created on demand. This is why example scripts can set values such as `resource.Operations["Spin"].OperationParameters[...]` directly without first checking whether the operation exists.
@@ -246,7 +246,7 @@ public override void Execute(IScriptingApi api)
 
 Example Cellario output, showing the resource name and resource type:
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcetypeproperty.png" size="84" width="576" height="240" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcetypeproperty.png" size="84" width="576" height="240" position="center" showCaption="false"}
 
 ## Property Type
 

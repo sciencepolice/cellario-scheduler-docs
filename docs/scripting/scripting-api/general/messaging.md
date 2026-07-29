@@ -211,17 +211,17 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the script displays a dialog window with **Yes** and **No** buttons.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod.png" size="46" width="294" height="165" position="center" alt="Notify dialog window" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod.png" size="46" width="294" height="165" position="center" alt="Notify dialog window" showCaption="false"}
 
 After clicking a button, the dialog window closes and a message window is displayed.
 The message text reports which button was clicked.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod2.png" size="72" width="475" height="178" position="center" alt="Message window with report" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod2.png" size="72" width="475" height="178" position="center" alt="Message window with report" showCaption="false"}
 
 After clicking **OK**, the window closes. Next, the script intentionally creates an
 exception to demonstrate the notification of errors.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod3.png" size="72" width="476" height="313" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/notifymethod3.png" size="72" width="476" height="313" position="center" showCaption="false"}
 
 - If message severity is fatal, Cellario shuts down.
   If message severity is serious, the user may elect to shut down.
@@ -363,7 +363,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the first plate triggers the checklist to be displayed.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/showchecklistmethod.png" size="56" width="355" height="241" position="center" alt="Run Validation diaog winw" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/showchecklistmethod.png" size="56" width="355" height="241" position="center" alt="Run Validation diaog winw" showCaption="false"}
 
 Depending on the user input, either the system stops or the order pauses.
 
@@ -454,7 +454,7 @@ if (!api.Messaging.ShowChecklist("Run Validation", new[] {"DMSO bottle is full",
 
 The curUIContext returns a value (ID).
 
-![curUIContext returned value](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/uicontext-resultid.png)
+![curUIContext returned value](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/uicontext-resultid.png)
 
 ## Property Type
 
@@ -483,7 +483,7 @@ public override void Execute(IScriptingApi api)
 
 Example Cellario output
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/writediagnosticmethod.png" size="96" width="533" height="60" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/writediagnosticmethod.png" size="96" width="533" height="60" position="center" showCaption="false"}
 
 *ScriptLogLevel* is an enum with the possible values: Minimal, Normal, None, Verbose.
 

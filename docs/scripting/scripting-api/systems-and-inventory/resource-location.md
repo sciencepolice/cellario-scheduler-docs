@@ -18,7 +18,7 @@ The Resource property is the handle to the resource to which the resource locati
 In this example, the Spin operation is followed by the Script operation. The operation
 parameter *Execution Event* for the script is set to “Before Move.”
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourceproperty.png" size="40" width="240" height="155" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resourceproperty.png" size="40" width="240" height="155" position="center" showCaption="false"}
 
 ```csharp
 public override void Execute(IScriptingApi api)
@@ -29,7 +29,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario order, the Spin operation is completed and then the script is executed before the plate is removed from the MicroSpin resource. The script writes the current plate’s location to the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourceproperty2.png" size="88" width="578" height="66" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resourceproperty2.png" size="88" width="578" height="66" position="center" showCaption="false"}
 
 ## Property Type
 

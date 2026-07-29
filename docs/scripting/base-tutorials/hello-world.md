@@ -17,7 +17,7 @@ For instructions on creating a protocol, see the *Cellario Operator Guide* (for 
 :::WorkflowBlockItem
 After you assign a storage resource to the plate, drag and drop a New Script script onto the thread after the plate.
 
-![Dragging a new script to a thread](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep5.png)
+![Dragging a new script to a thread](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep5.png)
 :::
 
 :::WorkflowBlockItem
@@ -27,13 +27,13 @@ Click **Save** to save the protocol.
 :::WorkflowBlockItem
 Double-click the *New Script* operation icon within the thread to open the code editor.
 
-![New script opened in code editor](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep7.png)
+![New script opened in code editor](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep7.png)
 :::
 
 :::WorkflowBlockItem
 Edit the Cellario script to contain the following code:
 
-![Edited code](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep8.png)
+![Edited code](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep8.png)
 
 **Each region of code is explained below**
 
@@ -56,7 +56,7 @@ Click **Compile** in the C# Script window to check the syntax for the script.&#x
 
 A message window confirms that the script compiled successfully. If there are syntax errors, the message displays details about the type of error and its location.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep10.jpg" size="70" width="520" height="248" position="flex-start" alt="Compile Script confirmation message window" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep10.jpg" size="70" width="520" height="248" position="flex-start" alt="Compile Script confirmation message window" showCaption="false"}
 :::
 
 :::WorkflowBlockItem
@@ -74,19 +74,19 @@ Click **Save** in the Protocol Designer to save the protocol.
 :::WorkflowBlockItem
 Click the *Order* tab, and then click **Add** to add a new order.
 
-![Order Add button](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep13.png)
+![Order Add button](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep13.png)
 :::
 
 :::WorkflowBlockItem
 Select the *Hello World* protocol you created, and then click **Order**.
 
-![Selecting the protocol](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep14.png)
+![Selecting the protocol](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep14.png)
 :::
 
 :::WorkflowBlockItem
 Add plates to the order by right-clicking in the storage area and selecting **Add Samples**.
 
-![Adding samples to a storage location](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep15.png)
+![Adding samples to a storage location](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep15.png)
 :::
 
 ::::WorkflowBlockItem
@@ -100,13 +100,13 @@ In this example, we do not want to execute any real operation on the resources o
 :::WorkflowBlockItem
 Click the *Run* tab, and then right-click in the resource tree and select **Simulate/Un-Simulate All** to simulate all the devices.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep17.png" size="40" width="371" height="380" position="flex-start" alt="Selecting Simulate/Un-Simlate Al for a resource" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep17.png" size="40" width="371" height="380" position="flex-start" alt="Selecting Simulate/Un-Simlate Al for a resource" showCaption="false"}
 :::
 
 :::WorkflowBlockItem
 Click the Debug icon below the log pane to turn on the Debug message filter.
 
-![Debug icon of Cellario Message pane](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep18.png)
+![Debug icon of Cellario Message pane](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep18.png)
 :::
 
 :::WorkflowBlockItem
@@ -118,6 +118,6 @@ Click **Start Run** to start the Cellario run.
 
 During the run, Cellario writes "Hello World" to the message log.
 
-!["Hello World" written to Message log](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep21.png)
+!["Hello World" written to Message log](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/helloworldstep21.png)
 :::
 :::::

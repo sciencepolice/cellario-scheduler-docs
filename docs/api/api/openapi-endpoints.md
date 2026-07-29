@@ -25,7 +25,7 @@ This provides:
 
 Download a bundled copy of the complete OpenAPI specification, no running server required:
 
-- [Cellario Scheduler 4.5 API (OpenAPI 3.0, JSON)](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/api/CellarioScheduler-4.5-API.json)
+- [Cellario Scheduler 4.5 API (OpenAPI 3.0, JSON)](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/api/CellarioScheduler-4.5-API.json)
 
 You can also pull the live spec directly from your own Cellario server:
 

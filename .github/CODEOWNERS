@@ -2,13 +2,16 @@
 # See https://docs.github.com/articles/about-code-owners
 
 # Repo-wide default
-*                       @HRB-SW/docs-maintainers
+*                       @sciencepolice
 
 # Per-section owners
-/docs/user-guide/       @HRB-SW/docs-maintainers
-/docs/api/              @HRB-SW/docs-maintainers
-/docs/scripting/        @HRB-SW/docs-maintainers
+/docs/user-guide/       @sciencepolice
+/docs/api/              @sciencepolice
+/docs/scripting/        @sciencepolice
 
-# Sync config changes warrant extra scrutiny
-/archbee.yaml           @HRB-SW/docs-maintainers
-/docs/summary.md        @HRB-SW/docs-maintainers
+# Sync config changes warrant extra scrutiny.
+# NOTE: these paths must match the real filenames exactly -- the config is the
+# dotfile `.archbee.yaml`, and the nav file is capitalized `Summary.md`. A
+# CODEOWNERS path that matches nothing fails silently.
+/.archbee.yaml          @sciencepolice
+/docs/Summary.md        @sciencepolice

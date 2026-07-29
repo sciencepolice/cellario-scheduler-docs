@@ -17,7 +17,7 @@ Open the Script Library. (**Settings > Maintenance > Script Library**).
 :::WorkflowBlockItem
 Click **Add Group** to add a new group.
 
-![Adding a group to the Script Library](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptssteps2-3.png)
+![Adding a group to the Script Library](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptssteps2-3.png)
 :::
 
 :::WorkflowBlockItem
@@ -29,7 +29,7 @@ In this example, the group is called *Test*.
 :::WorkflowBlockItem
 Select the new group from the list in the left pane, and then click **Add Script** to add a new script.
 
-![Adding a new script to the library](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptssteps4-5.png)
+![Adding a new script to the library](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptssteps4-5.png)
 :::
 
 :::WorkflowBlockItem
@@ -37,7 +37,7 @@ Enter a name for the script, and then click **OK**. In this example, the script 
 
 A new script is created with some template code.
 
-![Template code of new script](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep52.png)
+![Template code of new script](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep52.png)
 :::
 
 :::WorkflowBlockItem
@@ -45,7 +45,7 @@ Edit the code as needed. In this example, the code is added to the *Execute* met
 
 The code will display the message "Test1."
 
-![Code line to write "Test1"](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep6.png)
+![Code line to write "Test1"](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep6.png)
 :::
 
 :::WorkflowBlockItem
@@ -54,7 +54,7 @@ Click **Compile** to check the syntax and compile the script.
 - If there are no problems in the script, a message window confirms that it compiled successfully.
 - If there are problems with the script, a warning message window appears and provides information about the error. For example, if the semicolon was missing from the end of the `WriteDiagnostic` line, the message window provides information about the error.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep7.png" size="72" width="418" height="199" position="center" alt="Failed compilation message window" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/addingscriptsstep7.png" size="72" width="418" height="199" position="center" alt="Failed compilation message window" showCaption="false"}
 :::
 
 :::WorkflowBlockItem

@@ -33,7 +33,7 @@ namespace Customer.Scripting
 During the Cellario order, the script writes out the name of the current protocol to the
 Cellario message log. In this example, the protocol is called *CurrentProtocol*.
 
-![Current protocol name written to the Cellario message log](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/protocolnameproperty.png)
+![Current protocol name written to the Cellario message log](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/protocolnameproperty.png)
 
 ## Property Type
 
@@ -61,7 +61,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, this script displays a list of all the thread names in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/threadsproperty.png" size="86" width="596" height="103" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/threadsproperty.png" size="86" width="596" height="103" position="center" showCaption="false"}
 
 ## Property Type
 

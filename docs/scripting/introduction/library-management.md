@@ -8,7 +8,7 @@ createdAt: Wed Aug 02 2023 15:38:59 GMT+0000 (Coordinated Universal Time)
 The library of reusable Cellario scripts can be managed from the Script Library Manager.
 The Script Library Manager can be accessed via **Cellario > Maintenance > Script Library**.
 
-![Script Library in Cellario](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/scriptlibrarymanager.png)
+![Script Library in Cellario](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/scriptlibrarymanager.png)
 
 # Library Manager Methods
 
@@ -32,18 +32,18 @@ Intellisense is a context-aware code completion feature. When editing code, Inte
 
 After typing `api.`, Intellisense displays all of the methods and properties associated with IScriptingApi.
 
-![Intellisense displaying methods](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense1.jpg)
+![Intellisense displaying methods](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense1.jpg)
 
 Intellisense is intelligently linked to the Cellario database. After typing `api.Resources[`
 , intellisense displays a list of all the resource names on the current system.
 
-![Intellisense displaying resources](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense2.jpg)
+![Intellisense displaying resources](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense2.jpg)
 
 After typing `api.Resources[“resource name”].Operations[` , intellisense displays a list of all the operations associated with the resource.
 In this example, the operations for resource *Bravo 1* are shown.
 
-![Intellisense displaying operation resources](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense3.jpg)
+![Intellisense displaying operation resources](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense3.jpg)
 
 After typing `api.Resources[“resource name”].Operations[“operation name”]` , Intellisense  displays a list of all the operation parameters associated with the operation.
 
-![Intellisense displaying operation parameters](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense4.jpg)
+![Intellisense displaying operation parameters](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/intellisense4.jpg)

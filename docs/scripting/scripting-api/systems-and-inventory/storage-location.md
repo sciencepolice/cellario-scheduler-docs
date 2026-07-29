@@ -46,7 +46,7 @@ public override void Execute(IScriptingApi api)
 During the Cellario run, the script finds a handle to the resource *SteriStore 1*, then find
 an available location. Using the method IsEmpty, the location is confirmed to be empty.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/isemptyproperty.png" size="86" width="575" height="57" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/isemptyproperty.png" size="86" width="575" height="57" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -129,7 +129,7 @@ During the Cellario run, the script finds a handle to the SteriStore resource.
 Using the method GetAvailableLocation, the next available storage location is found.
 The position and stack for the storage location are displayed in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/positionproperty.png" size="84" width="573" height="63" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/positionproperty.png" size="84" width="573" height="63" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -169,7 +169,7 @@ During the Cellario run, the script finds a handle to the SteriStore resource. U
 
 The position, stack, and resource name for the storage location are displayed in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/locationresourceproperty.png" size="82" width="575" height="65" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/locationresourceproperty.png" size="82" width="575" height="65" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -209,7 +209,7 @@ During the Cellario run, the script finds a handle to the SteriStore resource. U
 
 The position, stack, and resource name for the storage location are displayed in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcenameproperty.png" size="84" width="574" height="62" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcenameproperty.png" size="84" width="574" height="62" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -302,7 +302,7 @@ Using the method GetAvailableLocation, the next available storage location is fo
 
 The resource name for the storage unit is displayed in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/unitproperty.png" size="88" width="577" height="64" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/unitproperty.png" size="88" width="577" height="64" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -330,7 +330,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario protocol, the script displays a list of all the thread names from the current protocol.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/threadnameproperty.png" size="88" width="600" height="107" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/threadnameproperty.png" size="88" width="600" height="107" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -360,11 +360,11 @@ public override void Execute(IScriptingApi api)
 
 In this example, the protocol has seven operation steps (Plate, Script, Dispense, Read, Incubate, Read, End).
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/stepsproperty.png" size="32" width="202" height="389" position="center" alt="Example thread" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/stepsproperty.png" size="32" width="202" height="389" position="center" alt="Example thread" showCaption="false"}
 
 The script displays the number of operations, and then the name for each operation.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/stepnotesproperty2.png" size="64" width="438" height="165" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/stepnotesproperty2.png" size="64" width="438" height="165" position="center" showCaption="false"}
 
 ## Property Type
 

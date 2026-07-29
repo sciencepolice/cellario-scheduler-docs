@@ -74,11 +74,11 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, if the current plate does not have a barcode, the order pauses.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/batchpausemethod.png" size="84" width="574" height="117" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/batchpausemethod.png" size="84" width="574" height="117" position="center" showCaption="false"}
 
 The status of the current Cellario order changes to *Paused*.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/batchpausemethod2.png" size="90" width="621" height="60" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/batchpausemethod2.png" size="90" width="621" height="60" position="center" showCaption="false"}
 
 ## Method Parameters
 
@@ -110,11 +110,11 @@ public class EgOrderDescription : AbstractScript
 
 During the Cellario run, the script displays the order description. The description is displayed on the **Run** tab and the **Order** tab.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/descriptionproperty.png" size="74" width="507" height="59" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/descriptionproperty.png" size="74" width="507" height="59" position="center" showCaption="false"}
 
 The script displays the order description in the Cellario message window.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/descriptionproperty2.png" size="86" width="580" height="61" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/descriptionproperty2.png" size="86" width="580" height="61" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -169,7 +169,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the script displays the run order id in the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/runnumberproperty.png" size="86" width="585" height="61" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/runnumberproperty.png" size="86" width="585" height="61" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -195,7 +195,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario order, the script displays the current run state in the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/runstateproperty.png" size="88" width="577" height="63" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/runstateproperty.png" size="88" width="577" height="63" position="center" showCaption="false"}
 
 ## Property Type
 

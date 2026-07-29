@@ -79,7 +79,7 @@ In this example protocol, after the script operation there is a Read operation w
 
 During the Cellario run, the script displays a list of assigned resources and then displays a list of resources that can be assigned to the operation.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/getavailableresourcesmethod.png" size="84" width="566" height="162" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/getavailableresourcesmethod.png" size="84" width="566" height="162" position="center" showCaption="false"}
 
 ## Method Parameters
 
@@ -118,7 +118,7 @@ there is a Read operation with the assigned resource *InCell\_01*.
 
 During the Cellario order, the script displays the remaining operations steps and the operation parameters for each step.
 
-![Remaining operation steps and their operation parameters](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/operationparametersproperty.png)
+![Remaining operation steps and their operation parameters](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/operationparametersproperty.png)
 
 ## Property Type
 
@@ -148,11 +148,11 @@ public override void Execute(IScriptingApi api)
 
 In this example protocol, the operations are performed in the following order: Plate > Move > Script > Read > Move > End. The script is set to execute after Move. The Read operation has a two second pause before execution, and a ten second pause after execution.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/pauseafterproperty.png" size="50" width="325" height="139" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/pauseafterproperty.png" size="50" width="325" height="139" position="center" showCaption="false"}
 
 During the Cellario run, the script displays the pause before and after for each of the remaining operation steps.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/pauseafterproperty2.png" size="96" width="632" height="103" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/pauseafterproperty2.png" size="96" width="632" height="103" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -199,7 +199,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the script displays the step name and priority for all the remaining operations.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/priorityproperty.png" size="84" width="580" height="204" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/priorityproperty.png" size="84" width="580" height="204" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -227,7 +227,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the script displays the step name and timeout for each of the remaining operation steps.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/timeoutproperty.png" size="84" width="576" height="121" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/timeoutproperty.png" size="84" width="576" height="121" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -269,7 +269,7 @@ The Remove method checks if the given step can be removed from the remaining ste
 
 The Cellario protocol for this example has a script operation followed by Dispense, Read, Dispense, Spin, and End.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/removemethod.png" size="36" width="209" height="386" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/removemethod.png" size="36" width="209" height="386" position="center" showCaption="false"}
 
 When removing Cellario operations, it’s important to remember that Cellario automatically
 inserts Move operations in between the operations that are shown in the Protocol Designer. You must make sure that the Move operation is also removed; otherwise, deadlocks might occur.
@@ -351,7 +351,7 @@ public class EgRemove : AbstractScript
 
 The Cellario Message Log below is highlighted to show where the Read and Move operations have been removed.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/removemethod2.png" size="84" width="587" height="615" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/removemethod2.png" size="84" width="587" height="615" position="center" showCaption="false"}
 
 ## Method Parameters
 

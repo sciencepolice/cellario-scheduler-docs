@@ -27,4 +27,4 @@ CellarioScheduler-4\.5-API\.json
 # CONTRIBUTING image convention, but the repo is currently private so raw URLs
 # 404 for the unauthenticated CI checker (same situation as the OpenAPI spec
 # above). Remove once the repo is public.
-raw\.githubusercontent\.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/
+raw\.githubusercontent\.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/

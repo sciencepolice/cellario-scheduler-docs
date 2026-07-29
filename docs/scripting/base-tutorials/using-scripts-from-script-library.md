@@ -26,13 +26,13 @@ The new protocol opens in the Protocol Designer.
 :::WorkflowBlockItem
 Drag and drop a Plate operation into the Design pane to create a new thread.
 
-![Dragging a plate to create a thread](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep4.png)
+![Dragging a plate to create a thread](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep4.png)
 :::
 
 :::WorkflowBlockItem
 Assign a storage resource to the Plate operation.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep5.png" size="50" width="312" height="193" position="center" alt="Assigning a storage resource" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep5.png" size="50" width="312" height="193" position="center" alt="Assigning a storage resource" showCaption="false"}
 :::
 
 :::WorkflowBlockItem
@@ -40,7 +40,7 @@ Drag and drop the *Test 1* script on to the new thread.
 
 Double-clicking the script operation icon displays the content of the script.
 
-![Dragging the script to a thread](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep6.png)
+![Dragging the script to a thread](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/usingscriptstep6.png)
 :::
 
 :::WorkflowBlockItem

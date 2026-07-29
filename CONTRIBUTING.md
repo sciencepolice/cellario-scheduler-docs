@@ -92,7 +92,7 @@ Images live in `docs/assets/images/<section>/` and are referenced by **raw GitHu
 Archbee points back to GitHub for hosting:
 
 ```markdown
-![Run dialog](https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/user-guide/run-dialog.png)
+![Run dialog](https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/user-guide/run-dialog.png)
 ```
 
 Notes:

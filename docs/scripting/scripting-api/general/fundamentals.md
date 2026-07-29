@@ -29,7 +29,7 @@ public override void Execute(IScriptingApi api)
 
 Example Cellario output:
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/alllabwareproperty.png" size="72" width="445" height="119" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/alllabwareproperty.png" size="72" width="445" height="119" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -56,7 +56,7 @@ public override void Execute(IScriptingApi api)
 
 During the Cellario run, the script displays the name of the current plate in the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/currentplateproperty.png" size="96" width="577" height="60" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/currentplateproperty.png" size="96" width="577" height="60" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -105,7 +105,7 @@ public override void Execute(IScriptingApi api)
 During the Cellario run, this script displays the current status of all the plates in the order.
 In this example order, there are three plates. Following is the output from the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/getplatesmethod.png" size="96" width="586" height="102" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/getplatesmethod.png" size="96" width="586" height="102" position="center" showCaption="false"}
 
 ## Method Parameters
 
@@ -141,7 +141,7 @@ public override void Execute(IScriptingApi api)
 During the Cellario run, this script displays the total number of plates in the current thread
 called “Assay Plate 0” and shows the plate number and name for each plate in the current thread.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/getplatesforcurrentthreadmethod.png" size="96" width="577" height="121" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/getplatesforcurrentthreadmethod.png" size="96" width="577" height="121" position="center" showCaption="false"}
 
 ## Method Parameters
 
@@ -182,7 +182,7 @@ public override void Execute(IScriptingApi api)
 
 During a live Cellario run the message “Live Run” is displayed in the Cellario message log.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/isexecutinginanalysisproperty.png" size="96" width="579" height="64" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/isexecutinginanalysisproperty.png" size="96" width="579" height="64" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -226,7 +226,7 @@ public override void Execute(IScriptingApi api)
 
 Displays a list of all the Cellario resources
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcesproperty.png" size="96" width="564" height="183" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/resourcesproperty.png" size="96" width="564" height="183" position="center" showCaption="false"}
 
 ## Property Type
 

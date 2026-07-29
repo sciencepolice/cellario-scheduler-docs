@@ -31,7 +31,7 @@ The notes for the operation defined in the protocol design.
 
 In this example protocol, both the Dispense operation and Read operation have step notes.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/stepnotesproperty.png" size="36" width="203" height="302" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/stepnotesproperty.png" size="36" width="203" height="302" position="center" showCaption="false"}
 
 ```csharp
 public override void Execute(IScriptingApi api)
@@ -69,11 +69,11 @@ public override void Execute(IScriptingApi api)
 
 In this example protocol, the TimesUsed for the secondary thread has been set to *10*.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/timesusedproperty.png" size="58" width="364" height="213" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/timesusedproperty.png" size="58" width="364" height="213" position="center" showCaption="false"}
 
 During the Cellario run, the script displays the TimesUsed value for all the remaining operation steps.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/timesusedproperty2.png" size="82" width="578" height="123" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/timesusedproperty2.png" size="82" width="578" height="123" position="center" showCaption="false"}
 
 ## Property Type
 

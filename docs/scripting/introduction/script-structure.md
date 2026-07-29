@@ -71,7 +71,7 @@ Each script should have a unique class name, and inherits from the class Abstrac
 Cellario scripts have the method *Execute*, and two optional methods, *AllocateResources* and *ReleaseResources*.
 AllocateResources and ReleaseResources functions are required if the script needs to claim resources.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/scriptingmethods.jpg" size="76" width="611" height="160" position="center" alt="Scripting methods flow" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/scriptingmethods.jpg" size="76" width="611" height="160" position="center" alt="Scripting methods flow" showCaption="false"}
 
 ## AllocateResources
 

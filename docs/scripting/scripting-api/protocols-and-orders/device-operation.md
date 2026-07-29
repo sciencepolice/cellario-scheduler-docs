@@ -55,7 +55,7 @@ public override void Execute(IScriptingApi api)
 
 This script displays all the operation that a Bravo dispenser can perform.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/deviceoperationnameproperty.png" size="78" width="538" height="142" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/deviceoperationnameproperty.png" size="78" width="538" height="142" position="center" showCaption="false"}
 
 ## Property Type
 
@@ -89,7 +89,7 @@ The example script displays all of the operation parameters for the operation Li
 
 The script then updates the value for the operation parameter *Bravo Protocol*.
 
-::Image[]{src="https://raw.githubusercontent.com/HRB-SW/cellario-scheduler-docs/main/docs/assets/images/scripting/deviceoperationoperationparametersproperty.png" size="76" width="522" height="81" position="center" showCaption="false"}
+::Image[]{src="https://raw.githubusercontent.com/sciencepolice/cellario-scheduler-docs/main/docs/assets/images/scripting/deviceoperationoperationparametersproperty.png" size="76" width="522" height="81" position="center" showCaption="false"}
 
 ## Property Type
 
