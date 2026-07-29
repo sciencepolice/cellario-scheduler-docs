@@ -19,6 +19,10 @@ namespace Customer.Scripting
     {
         public override void Execute(IScriptingApi api)
         {
+            // Replace with your own Slack Incoming Webhook URL. Create one at
+            // https://api.slack.com/messaging/webhooks -- the URL is a credential,
+            // so keep it out of source control (read it from config or an
+            // environment variable in anything beyond a throwaway sample).
             var url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL";
             var message = "Shake is Complete";
             var slackMessage = @"
