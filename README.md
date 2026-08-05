@@ -14,6 +14,7 @@ and holds the Archbee sync configuration.
 - Sync is **one-way: GitHub → Archbee**. Every push to `main` triggers a sync; nobody
   edits in Archbee directly.
 - The repo is **public**; images are GitHub-hosted and referenced by raw URL.
+- In the future, images maybe stored in Azure Blob Storage.
 
 ## Structure
 
