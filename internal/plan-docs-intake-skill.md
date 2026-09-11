@@ -1933,7 +1933,7 @@ or nav group is ambiguous rather than guessing. Design notes:
 
 Run: `node --test ".claude/skills/docs-intake/test/*.test.mjs"`
 
-Expected: PASS — 34 tests across 6 files, 0 failures.
+Expected: PASS — 35 tests across 6 files, 0 failures (the 35th is the capitalized-Samples regression test added by refinement 9).
 
 - [ ] **Step 4: End-to-end dry run against real content**
 
@@ -1966,6 +1966,47 @@ nothing.
 git add .claude/skills/docs-intake/SKILL.md CONTRIBUTING.md
 git commit -m "Add docs-intake skill definition and CONTRIBUTING pointer"
 ```
+
+---
+
+## Known Gaps — Deferred by Decision
+
+Found during implementation, **deliberately not fixed**. Deferred by the repo owner on
+2026-09-11 pending review of how the affected pages actually render in Archbee previews —
+the preview outcome changes which fix is correct.
+
+**`lib/refs.mjs` reference extraction is context-blind.** Two consequences, both measured
+against real content rather than assumed:
+
+1. **Present today — `check` reports false positives.** Against the real repo, `check` reports
+   26 broken refs of which only **13 are genuine** (links to files referenced but never
+   copied, already covered by the `.lycheeignore` TODO block). Of the other 13:
+   - **9** are CommonMark angle-bracket links, e.g.
+     `[Adding Scripts](<./adding-scripts-to-the-script-library.md>)` in
+     `docs/scripting/base-tutorials/configuring-autorecovery-scripts.md:10`. The target files
+     exist; `extractRefs` captures the target with the `<>` included, so resolution fails.
+     The form appears 9 times across 5 published pages.
+   - **~4** are `use{file=...}` occurrences that are not live embeds — `docs/config.md` is
+     entirely an HTML comment of example declarations (already exempted in
+     `.markdownlint-cli2.yaml` for this reason), and `docs/api/index.md` plus
+     `docs/scripting/index.md` show the syntax inside inline backticks with a literal `...`.
+
+   Side effect of the same gap: those 9 angle-bracket links are also **never kebab-cased**,
+   because `kebabLinkTargets`' `.md` end-anchor test fails against a trailing `>`.
+
+2. **Latent, zero exposure today — rewriting could corrupt a page.** `rewriteImageRefs` and
+   `kebabLinkTargets` use the same context-blind matching, so a ref inside a fenced code
+   block, inline code span, or HTML comment would be rewritten as if it were live (verified
+   by execution during review). A scan of all 56 pages under `docs/` found **3** at-risk
+   regions, **all** of them `use{file=}` examples — and embeds are only ever reported, never
+   rewritten. **No image or link ref currently sits inside a fence, comment, or code span**,
+   so there is no exposure in today's content. The risk is a future page that documents
+   markdown by example.
+
+**Before fixing, check the Archbee previews.** If Archbee renders the angle-bracket links
+correctly, the tooling's blindness to them is pure `check` noise and the fix belongs in
+`refs.mjs`. If Archbee mishandles the form too, the better fix is to rewrite those 9 links in
+the content instead, and `refs.mjs` needs only the embed-context change.
 
 ---
 
