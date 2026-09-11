@@ -34,6 +34,11 @@ export function titleFromMarkdown(md, fallback) {
   return m ? m[1].replace(/[`*_]/g, '').trim() : fallback;
 }
 
+export function sectionOfDest(destRelPath) {
+  const [first, ...rest] = destRelPath.split('/');
+  return rest.length ? first : null;
+}
+
 export async function plan({ repoRoot }) {
   const inboxDir = path.join(repoRoot, '_inbox');
   const sources = await walk(inboxDir);
