@@ -963,6 +963,106 @@ git commit -m "Guard asset collisions and correct the SKILL.md procedure"
 
 ---
 
+### Task 12: Round-2 review fixes
+
+Four findings from the round-2 whole-branch review plus one found in real use. All small.
+
+**Files:**
+- Modify: `scripts/docs-intake/lib/refs.mjs`
+- Modify: `scripts/docs-intake/lib/manifest.mjs`
+- Modify: `.claude/skills/docs-intake/SKILL.md`
+- Test: `.claude/skills/docs-intake/test/refs.test.mjs`, `.claude/skills/docs-intake/test/manifest.test.mjs`
+
+- [ ] **Fix 1 — `index.md` must not trigger a collision stop** *(found in real use)*
+
+`collisionsFor` matches on basename, but `index.md` is a **deliberately repeated** filename:
+`CONTRIBUTING.md` states "one `index.md` per section as its landing page", and `docs/` already
+holds three (`api/`, `scripting/`, `user-guide/`). A real drop of a new section landing page
+therefore stopped with `"index.md" already exists elsewhere in docs/ (api/index.md,
+scripting/index.md, user-guide/index.md)` — a permanent false positive on every future section.
+
+In `lib/manifest.mjs`, exempt the convention filename:
+
+```js
+// index.md is the per-section landing-page convention (CONTRIBUTING.md), so it is
+// SUPPOSED to recur. Basename collision carries no signal for it.
+const COLLISION_EXEMPT = new Set(['index.md']);
+
+export async function collisionsFor(repoRoot, destRelPath) {
+  const base = path.basename(destRelPath).toLowerCase();
+  if (COLLISION_EXEMPT.has(base)) return [];
+  const pages = (await walk(path.join(repoRoot, 'docs'))).filter((p) => MARKDOWN.test(p));
+  return pages
+    .filter((p) => path.basename(p).toLowerCase() === base && p !== destRelPath)
+    .sort();
+}
+```
+
+Test: a dropped `_inbox/api/client-sdk/index.md` against a fixture holding other `index.md`
+files yields `collisions: []` and no stop, while a non-exempt basename still collides.
+
+- [ ] **Fix 2 — stop when a dropped asset would overwrite a published one** *(review finding B)*
+
+`plan` computes collisions only for `isMarkdown && NEW`, so a dropped image whose destination
+already exists renders as `asset | UPDATE` with exit `0` and no stop — and a generic name like
+`Overview.png` then replaces a different page's published artwork. `check` stays green because
+the URL still resolves. `SKILL.md`'s own stop table already says this must stop.
+
+In `plan`, after computing `classification`, add:
+
+```js
+    if (!isMarkdown && classification === 'UPDATE') {
+      stops.push({
+        source,
+        reason: `"${path.basename(destRelPath)}" already exists at docs/${destRelPath} - a dropped asset must not overwrite published artwork; rename it, or confirm it is the same image.`,
+      });
+    }
+```
+
+Test: a fixture with `docs/assets/images/user-guide/overview.png` present plus a dropped
+`_inbox/user-guide/images/Overview.png` produces a stop and CLI exit `2`.
+
+- [ ] **Fix 3 — never kebab-case a link to a structural root file** *(review finding C)*
+
+Verified by the reviewer: `[Home](../Introduction.md)` becomes `../introduction.md`, and
+`check` reports **0** broken links because `existsSync` is case-insensitive on Windows.
+Archbee's sync filesystem is case-sensitive, so the portal gets a silently broken link to its
+home page. `toDestination` and `validate.mjs`'s `STRUCTURAL` both exempt these files;
+`kebabLinkTargets` does not. No instances exist in `docs/` today — this is latent.
+
+In `lib/refs.mjs`, import `STRUCTURAL_ROOT_FILES` alongside the existing `paths.mjs` imports
+and add `Summary.md` to the exemption locally (the constant deliberately excludes it because a
+dropped `Summary.md` is a stop, but a *link* to it must still not be kebab-cased):
+
+```js
+const STRUCTURAL_LINK_TARGETS = new Set([...STRUCTURAL_ROOT_FILES, 'Summary.md']);
+```
+
+and in `kebabLinkTargets`, before kebab-casing, return `raw` when the target's basename is in
+that set. Test: `[Home](../Introduction.md)`, `[Config](./config.md)` and `[Nav](Summary.md)`
+are all left verbatim, while `[Auth](Authentication.md)` still becomes `authentication.md`.
+
+- [ ] **Fix 4 — correct `SKILL.md` stage 4's circular order** *(review finding A)*
+
+Stage 4 tells the agent to stop if anything is unresolved, then to run `lycheeignore` "once
+`check` is clean". But `check`'s clean predicate includes `rawFailures`, and a new raw-`main`
+URL **always** 404s before merge — precisely what `lycheeignore` suppresses. An agent following
+the text literally either aborts at "do not open a knowingly-red PR" or ships unsuppressed.
+
+Rewrite stage 4 as an explicit ordered sequence: run `check` (expect raw-URL 404s for any
+newly added asset — that is normal on the first pass, not a failure), then `lycheeignore` to
+record the temporary suppressions, then `check` again, which must now be clean apart from the
+documented pre-existing baseline. State plainly that a first-pass 404 on a brand-new asset is
+expected and that only a 404 whose file is missing locally is a real problem — `lycheeignore`
+already refuses that case with exit `2`.
+
+- [ ] **Verify and commit**
+
+Run `node --test ".claude/skills/docs-intake/test/*.test.mjs"` — expect 55 pass / 0 fail.
+Confirm `git status --porcelain docs/ .lycheeignore` is empty. Commit all five files together.
+
+---
+
 ## Still Deferred After This Addendum
 
 - **`lib/refs.mjs` context-blindness** (angle-bracket link targets; refs inside comments, code
