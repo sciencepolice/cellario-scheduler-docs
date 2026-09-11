@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-// docs-intake CLI. Three subcommands, all driven by .claude/skills/docs-intake/SKILL.md:
+// docs-intake CLI. Five subcommands, all driven by .claude/skills/docs-intake/SKILL.md:
 //
 //   plan          stage 1: enumerate and classify the inbox (never writes)
-//   rewrite-refs  stage 2: normalize refs in one placed page
+//   rewrite-refs  stage 2: normalize refs in one placed page; --from-inbox merges an update
+//   wire-nav      stage 3: append pages to their nav group in Summary.md (one write per run)
+//   lycheeignore  stage 4: temporary suppressions for assets not yet on main (one write)
 //   check         stage 4: lint, resolve refs, HEAD raw URLs, report orphans
 //
 // Exit codes: 0 clean, 1 validation failure, 2 ambiguity requiring a human, 64 usage.
