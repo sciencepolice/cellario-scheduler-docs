@@ -22,7 +22,11 @@
 - **Specs and plans live in `internal/`, never `docs/`.** `docs/` is Archbee's sync root and CI globs `docs/**/*.md`.
 - **Nothing under `scripts/`, `.claude/`, or `internal/` is linted or link-checked** by CI (`validate.yml` globs `docs/**/*.md` and `*.md`, where `*.md` is root-level only).
 - **Commit identity is repo-local:** `sciencepolice <47534695+sciencepolice@users.noreply.github.com>`. Pushing requires `gh auth switch --hostname github.com --user sciencepolice` first; the `dstugan_hrbs` EMU account can never have access.
-- **Test command, used by every task:** `node --test .claude/skills/docs-intake/test/`
+- **Test command, used by every task:** `node --test ".claude/skills/docs-intake/test/*.test.mjs"`
+  The **glob form is required**, quoted so Node expands it rather than the shell. The
+  directory form (`node --test <dir>`) fails on this machine (Node v24.19.0 on Windows) —
+  the runner tries to load the directory itself as a module and dies with
+  `MODULE_NOT_FOUND`. Verified working in both Git Bash and PowerShell.
 
 ---
 
@@ -1904,7 +1908,7 @@ remove after merge.
 ## Tests
 
 ```bash
-node --test .claude/skills/docs-intake/test/
+node --test ".claude/skills/docs-intake/test/*.test.mjs"
 ```
 ```
 
@@ -1926,7 +1930,7 @@ or nav group is ambiguous rather than guessing. Design notes:
 
 - [ ] **Step 3: Run the whole suite**
 
-Run: `node --test .claude/skills/docs-intake/test/`
+Run: `node --test ".claude/skills/docs-intake/test/*.test.mjs"`
 
 Expected: PASS — 34 tests across 6 files, 0 failures.
 
