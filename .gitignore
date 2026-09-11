@@ -7,3 +7,6 @@ _inbox/*
 # OS / editor cruft
 Thumbs.db
 .DS_Store
+
+# Subagent-driven-development scratch (briefs, reports, review packages, ledger).
+.superpowers/
