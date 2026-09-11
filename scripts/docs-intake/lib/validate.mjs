@@ -10,6 +10,9 @@ import { spawnSync } from 'node:child_process';
 import { walk } from './manifest.mjs';
 import { extractRefs, isExternal } from './refs.mjs';
 import { parseSummary, orphans } from './summary.mjs';
+import { RAW_BASE } from './paths.mjs';
+
+const RAW_PREFIX = RAW_BASE;
 
 /** Archbee structural files: never orphans, never kebab-cased. */
 export const STRUCTURAL = ['Introduction.md', 'Summary.md', 'config.md'];
@@ -130,6 +133,43 @@ export async function checkOrphans(repoRoot) {
     : [];
 
   return orphans(parsed, pages, { structural: STRUCTURAL, shadowDocs });
+}
+
+/**
+ * True when a raw-main URL points at a file that exists in this working tree.
+ * A 404 on a URL whose file IS present means "not merged yet" (safe to suppress);
+ * a 404 on a URL with NO local file means the asset was never copied - suppressing
+ * that hides a broken image from CI and it ships broken to the portal.
+ */
+export function assetExistsLocally(repoRoot, rawUrl) {
+  if (!rawUrl.startsWith(RAW_PREFIX)) return false;
+  const rel = decodeURIComponent(rawUrl.slice(RAW_PREFIX.length));
+  return existsSync(path.join(repoRoot, rel));
+}
+
+/** Suppressions in .lycheeignore whose referenced file now exists under docs/. */
+export async function suppressionsSatisfied(repoRoot) {
+  const ignorePath = path.join(repoRoot, '.lycheeignore');
+  if (!existsSync(ignorePath)) return [];
+  const raw = await readFile(ignorePath, 'utf8');
+  const patterns = raw
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('#'));
+
+  const pages = (await walk(path.join(repoRoot, 'docs'))).map((p) => `docs/${p}`);
+  const out = [];
+  for (const pattern of patterns) {
+    let re;
+    try {
+      re = new RegExp(pattern);
+    } catch {
+      continue;
+    }
+    const nowResolves = pages.filter((p) => re.test(p));
+    if (nowResolves.length) out.push({ pattern, nowResolves });
+  }
+  return out;
 }
 
 export function proposeLycheeIgnore(text, urls, { note }) {

@@ -11,14 +11,19 @@ import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { rewriteImageRefs, kebabLinkTargets, plumbingReport } from './lib/refs.mjs';
-import { plan, sectionOfDest } from './lib/manifest.mjs';
+import { plan, sectionOfDest, titleFromMarkdown } from './lib/manifest.mjs';
+import { parseSummary, groupForDirectory, appendEntry } from './lib/summary.mjs';
 import {
   runLint,
   checkLocalRefs,
   collectRawUrls,
   headCheck,
   checkOrphans,
+  assetExistsLocally,
+  suppressionsSatisfied,
+  proposeLycheeIgnore,
 } from './lib/validate.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -30,6 +35,8 @@ const USAGE = `Usage:
   intake.mjs plan [--json] [--repo-root <dir>]
   intake.mjs rewrite-refs <docs-relative-path> [--from-inbox <inbox-relative-path>] [--dry-run] [--repo-root <dir>]
   intake.mjs check [--fix] [--json] [--repo-root <dir>]
+  intake.mjs wire-nav <docs-relative-path>... [--title <t>] [--dry-run] [--repo-root <dir>]
+  intake.mjs lycheeignore [--dry-run] [--repo-root <dir>]
 `;
 
 export function parseArgs(argv) {
@@ -39,6 +46,7 @@ export function parseArgs(argv) {
     fix: false,
     repoRoot: DEFAULT_REPO_ROOT,
     fromInbox: null,
+    title: null,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i += 1) {
@@ -52,6 +60,9 @@ export function parseArgs(argv) {
     } else if (arg === '--from-inbox') {
       i += 1;
       flags.fromInbox = argv[i];
+    } else if (arg === '--title') {
+      i += 1;
+      flags.title = argv[i];
     } else if (arg.startsWith('-')) {
       throw new Error(`Unknown flag: ${arg}`);
     } else positional.push(arg);
@@ -145,12 +156,103 @@ async function main(argv) {
     return EXIT.OK;
   }
 
+  if (command === 'wire-nav') {
+    const rels = parsed.positional;
+    if (!rels.length) {
+      console.error('wire-nav needs at least one docs-relative path.');
+      console.error(USAGE);
+      return EXIT.USAGE;
+    }
+    if (flags.title && rels.length > 1) {
+      console.error('--title applies to a single page; pass pages one at a time to name them.');
+      return EXIT.USAGE;
+    }
+
+    const summaryPath = path.join(flags.repoRoot, 'docs', 'Summary.md');
+    let text = await readFile(summaryPath, 'utf8');
+
+    // Resolve every page FIRST: an ambiguous group must abort the whole run before
+    // any write, so Summary.md is never left half-wired.
+    const planned = [];
+    for (const rel of rels) {
+      const parsedSummary = parseSummary(text);
+      const listed = parsedSummary.groups.some((g) => g.entries.some((e) => e.path === rel))
+        || parsedSummary.preamble.some((e) => e.path === rel);
+      if (listed) {
+        console.log(`  already listed, skipping: ${rel}`);
+        continue;
+      }
+
+      const { group, ambiguous, candidates } = groupForDirectory(parsedSummary, rel);
+      if (ambiguous) {
+        const detail = candidates?.length
+          ? `candidates: ${candidates.join(', ')}`
+          : 'no group owns that directory';
+        console.error(
+          `ambiguous nav group for "${rel}" (${detail}) - a human must choose; nothing was written.`,
+        );
+        return EXIT.AMBIGUOUS;
+      }
+
+      const body = await readFile(path.join(flags.repoRoot, 'docs', rel), 'utf8');
+      const title = flags.title ?? titleFromMarkdown(body, path.basename(rel, '.md'));
+      planned.push({ rel, group, title });
+      // Apply to the in-memory text so the next iteration sees it and line numbers stay valid.
+      text = appendEntry(parseSummary(text), { group, title, path: rel });
+    }
+
+    if (!flags.dryRun && planned.length) await writeFile(summaryPath, text, 'utf8');
+
+    console.log(`${flags.dryRun ? '[dry-run] ' : ''}Summary.md`);
+    for (const p of planned) console.log(`  ${p.group}: - [${p.title}](${p.rel})`);
+    if (!planned.length) console.log('  no changes');
+    return EXIT.OK;
+  }
+
+  if (command === 'lycheeignore') {
+    const urls = await collectRawUrls(flags.repoRoot);
+    const failures = await headCheck(urls);
+
+    const suppressible = [];
+    const unsafe = [];
+    for (const f of failures) {
+      (assetExistsLocally(flags.repoRoot, f.url) ? suppressible : unsafe).push(f.url);
+    }
+
+    if (unsafe.length) {
+      console.error('Refusing to suppress: these raw URLs 404 and have no local file -');
+      console.error('the asset was never copied, so suppressing would ship a broken image.');
+      for (const u of unsafe) console.error(`  ${u}`);
+      return EXIT.AMBIGUOUS;
+    }
+
+    const ignorePath = path.join(flags.repoRoot, '.lycheeignore');
+    const before = existsSync(ignorePath) ? await readFile(ignorePath, 'utf8') : '';
+    const { text, added } = proposeLycheeIgnore(before, suppressible, {
+      note: 'this intake PR',
+    });
+
+    if (!flags.dryRun && added.length) await writeFile(ignorePath, text, 'utf8');
+
+    console.log(`${flags.dryRun ? '[dry-run] ' : ''}.lycheeignore`);
+    for (const u of added) console.log(`  temporary suppression: ${u}`);
+    if (!added.length) console.log('  no new assets need suppressing');
+
+    const satisfied = await suppressionsSatisfied(flags.repoRoot);
+    if (satisfied.length) {
+      console.log('\nExisting suppressions that now resolve (consider deleting the line):');
+      for (const s of satisfied) console.log(`  ${s.pattern} -> ${s.nowResolves.join(', ')}`);
+    }
+    return EXIT.OK;
+  }
+
   if (command === 'check') {
     const lint = runLint(flags.repoRoot, { fix: flags.fix });
     const brokenRefs = await checkLocalRefs(flags.repoRoot);
     const rawUrls = await collectRawUrls(flags.repoRoot);
     const rawFailures = await headCheck(rawUrls);
     const orphanPages = await checkOrphans(flags.repoRoot);
+    const satisfied = await suppressionsSatisfied(flags.repoRoot);
 
     const result = {
       lint: { ok: lint.ok, output: lint.output },
@@ -158,6 +260,7 @@ async function main(argv) {
       rawUrlsChecked: rawUrls.length,
       rawFailures,
       orphans: orphanPages,
+      satisfied,
     };
 
     if (flags.json) {
@@ -171,6 +274,8 @@ async function main(argv) {
       for (const f of rawFailures) console.log(`  ${f.status} ${f.url}`);
       console.log(`orphans (on disk, absent from Summary.md): ${orphanPages.length}`);
       for (const o of orphanPages) console.log(`  ${o}`);
+      console.log(`suppressions that now resolve: ${satisfied.length}`);
+      for (const s of satisfied) console.log(`  ${s.pattern} -> ${s.nowResolves.join(', ')}`);
     }
 
     const clean =
