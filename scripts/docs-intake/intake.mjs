@@ -61,10 +61,10 @@ export function parseArgs(argv) {
 
 function printPlan({ rows, stops }) {
   if (rows.length) {
-    console.log('| Source | Destination | Class | Title |');
-    console.log('| --- | --- | --- | --- |');
+    console.log('| Source | Destination | Kind | Class | Title |');
+    console.log('| --- | --- | --- | --- | --- |');
     for (const r of rows) {
-      console.log(`| ${r.source} | ${r.dest} | ${r.classification} | ${r.title ?? ''} |`);
+      console.log(`| ${r.source} | ${r.dest} | ${r.kind} | ${r.classification} | ${r.title ?? ''} |`);
     }
   } else {
     console.log('_inbox/ is empty - nothing to plan.');
@@ -101,11 +101,6 @@ async function main(argv) {
       return EXIT.USAGE;
     }
     const section = sectionOfDest(rel);
-    if (!section) {
-      console.error(`"${rel}" is a docs-root file with no section - nothing to rewrite.`);
-      return EXIT.AMBIGUOUS;
-    }
-
     const abs = path.join(flags.repoRoot, 'docs', rel);
     const original = await readFile(abs, 'utf8');
 
@@ -122,7 +117,9 @@ async function main(argv) {
       preservedImages = merged.preservedImages;
     }
 
-    const images = rewriteImageRefs(before, { section });
+    const images = section
+      ? rewriteImageRefs(before, { section })
+      : { text: before, rewritten: [], assets: [] };
     const links = kebabLinkTargets(images.text);
 
     if (!flags.dryRun && links.text !== original) await writeFile(abs, links.text, 'utf8');
@@ -186,4 +183,11 @@ async function main(argv) {
   return EXIT.USAGE;
 }
 
-process.exitCode = await main(process.argv.slice(2));
+try {
+  process.exitCode = await main(process.argv.slice(2));
+} catch (err) {
+  // An I/O or programming error must not masquerade as EXIT.VALIDATION (1),
+  // which the contract reserves for "the content failed validation".
+  console.error(`docs-intake: ${err?.message ?? err}`);
+  process.exitCode = EXIT.USAGE;
+}
