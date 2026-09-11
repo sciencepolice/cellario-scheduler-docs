@@ -35,6 +35,12 @@ test('toDestination never renames a file under samples/', () => {
   assert.equal(got.section, 'scripting');
 });
 
+test('toDestination handles capitalized Samples directories case-insensitively', () => {
+  const got = toDestination('scripting/Samples/CSharp Scripts/demo/Run_Data_Next.cs');
+  assert.equal(got.destRelPath, 'scripting/samples/csharp-scripts/demo/Run_Data_Next.cs');
+  assert.equal(got.section, 'scripting');
+});
+
 test('toDestination stops on a root drop with no section folder', () => {
   const got = toDestination('notes.md');
   assert.match(got.stop, /no section folder/);

@@ -282,8 +282,9 @@ export function toDestination(inboxRelPath) {
     };
   }
 
-  // Checked before kebab-casing; "samples" is already lowercase in every real path.
-  const inSamples = segments.includes('samples');
+  // Case-insensitive: a source repo may use "Samples/", and renaming a sample file
+  // would break use{file=...} embeds, prose links, and .lycheeignore entries.
+  const inSamples = segments.some((s) => s.toLowerCase() === 'samples');
   const dirs = segments.map(kebabCase);
 
   return {
@@ -1993,3 +1994,6 @@ drift — fold them back into `internal/design-docs-intake-skill.md` if they sur
    merge to the model; in practice the image-URL half is fully deterministic, so the tooling
    does it and the model handles only what genuinely needs judgment — re-placing embeds and
    reviewing large deletions. Keeps the subcommand count at three.
+9. **The `samples/` guard is case-insensitive.** A source repo may capitalize the folder as
+   `Samples/`, and the constraint that sample filenames must never be renamed must be enforced
+   rather than assumed to be honored by the drop structure.

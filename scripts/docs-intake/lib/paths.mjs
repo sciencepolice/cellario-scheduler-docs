@@ -54,8 +54,9 @@ export function toDestination(inboxRelPath) {
     };
   }
 
-  // Checked before kebab-casing; "samples" is already lowercase in every real path.
-  const inSamples = segments.includes('samples');
+  // Case-insensitive: a source repo may use "Samples/", and renaming a sample file
+  // would break use{file=...} embeds, prose links, and .lycheeignore entries.
+  const inSamples = segments.some((s) => s.toLowerCase() === 'samples');
   const dirs = segments.map(kebabCase);
 
   return {
