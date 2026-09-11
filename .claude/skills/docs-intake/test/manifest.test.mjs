@@ -107,6 +107,78 @@ test('plan marks non-markdown rows as assets with an assets/ destination', async
   assert.equal(row.dest, 'assets/images/user-guide/run-dialog.png');
 });
 
+test('index.md is exempt from collision detection - it is SUPPOSED to recur per-section', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'docs-intake-index-'));
+  await cp(FIXTURE, dir, { recursive: true });
+  // The fixture already has docs/user-guide/index.md. Add two more section landing
+  // pages so the "already exists elsewhere" scenario is realistic, then drop a
+  // brand-new one for a different section.
+  await mkdir(path.join(dir, 'docs', 'api'), { recursive: true });
+  await writeFile(path.join(dir, 'docs', 'api', 'index.md'), '# API\n', 'utf8');
+  await mkdir(path.join(dir, 'docs', 'scripting'), { recursive: true });
+  await writeFile(path.join(dir, 'docs', 'scripting', 'index.md'), '# Scripting\n', 'utf8');
+
+  await mkdir(path.join(dir, '_inbox', 'api', 'client-sdk'), { recursive: true });
+  await writeFile(
+    path.join(dir, '_inbox', 'api', 'client-sdk', 'index.md'),
+    '# Client SDK\n',
+    'utf8',
+  );
+
+  const { rows, stops } = await plan({ repoRoot: dir });
+  const row = rows.find((r) => r.dest === 'api/client-sdk/index.md');
+  assert.deepEqual(row.collisions, []);
+  assert.ok(
+    !stops.some((s) => s.source.endsWith('index.md')),
+    `expected no stop for index.md, got ${JSON.stringify(stops)}`,
+  );
+});
+
+test('a non-exempt basename still collides even when index.md is present', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'docs-intake-index-nonexempt-'));
+  await cp(FIXTURE, dir, { recursive: true });
+  await mkdir(path.join(dir, '_inbox', 'scripting'), { recursive: true });
+  await writeFile(path.join(dir, '_inbox', 'scripting', 'Hello World.md'), '# Hello World\n', 'utf8');
+
+  const { stops } = await plan({ repoRoot: dir });
+  assert.ok(
+    stops.some((s) => /already exists elsewhere/.test(s.reason)),
+    'non-exempt basename collision must still stop',
+  );
+});
+
+test('plan stops when a dropped asset would overwrite a published one', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'docs-intake-asset-collide-'));
+  await cp(FIXTURE, dir, { recursive: true });
+  await mkdir(path.join(dir, 'docs', 'assets', 'images', 'user-guide'), { recursive: true });
+  await writeFile(
+    path.join(dir, 'docs', 'assets', 'images', 'user-guide', 'overview.png'),
+    'published-bytes',
+    'utf8',
+  );
+  await mkdir(path.join(dir, '_inbox', 'user-guide', 'images'), { recursive: true });
+  await writeFile(
+    path.join(dir, '_inbox', 'user-guide', 'images', 'Overview.png'),
+    'new-bytes',
+    'utf8',
+  );
+
+  const { rows, stops } = await plan({ repoRoot: dir });
+  const row = rows.find((r) => r.source.endsWith('Overview.png'));
+  assert.equal(row.classification, 'UPDATE');
+  assert.ok(
+    stops.some((s) => s.source === row.source && /already exists at docs\//.test(s.reason)),
+    `expected an asset-overwrite stop, got ${JSON.stringify(stops)}`,
+  );
+
+  try {
+    execFileSync(process.execPath, [CLI, 'plan', '--repo-root', dir], { stdio: 'pipe' });
+    assert.fail('expected exit 2');
+  } catch (err) {
+    assert.equal(err.status, 2, `expected 2, got ${err.status}`);
+  }
+});
+
 test('a missing file surfaces as a usage error, not a validation failure', () => {
   try {
     execFileSync(process.execPath, [CLI, 'rewrite-refs', 'nope/missing.md', '--repo-root', FIXTURE], {

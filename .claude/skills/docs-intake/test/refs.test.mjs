@@ -50,6 +50,21 @@ test('rewriteImageRefs preserves a markdown title attribute', () => {
   assert.ok(text.endsWith('"A title")'), text);
 });
 
+test('kebabLinkTargets never kebab-cases a link to a structural root file', () => {
+  const md = [
+    '[Home](../Introduction.md)',
+    '[Config](./config.md)',
+    '[Nav](Summary.md)',
+    '[Auth](Authentication.md)',
+  ].join('\n\n');
+  const { text, rewritten } = kebabLinkTargets(md);
+  assert.ok(text.includes('[Home](../Introduction.md)'), 'Introduction.md left verbatim');
+  assert.ok(text.includes('[Config](./config.md)'), 'config.md left verbatim');
+  assert.ok(text.includes('[Nav](Summary.md)'), 'Summary.md left verbatim');
+  assert.ok(text.includes('[Auth](authentication.md)'), 'non-structural targets still kebab-cased');
+  assert.equal(rewritten.length, 1);
+});
+
 test('kebabLinkTargets normalizes .md links only', () => {
   const md = [
     '[Auth](Authentication.md)',

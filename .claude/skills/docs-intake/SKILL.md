@@ -82,27 +82,47 @@ written in that case, and the human chooses the group.
 
 ## Stage 4 — Validate (one write)
 
-```bash
-node scripts/docs-intake/intake.mjs check
-```
+Run this exact sequence, in order. It is circular-looking only if you stop after step 1 — don't:
 
-Compare against the repo's known baseline — `docs/api/index.md` is already an orphan, and the
-`.lycheeignore` TODO block suppresses links to files never copied. **New** problems are yours
-to fix; pre-existing ones are out of scope (see `internal/design-docs-intake-skill.md` §8).
+1. **`check` (first pass).**
 
-- Auto-fixable lint: re-run with `--fix`, then `check` again.
-- Anything else unresolved: stop. Do not open a knowingly-red PR.
+   ```bash
+   node scripts/docs-intake/intake.mjs check
+   ```
 
-Once `check` is clean, suppress the brand-new raw-`main` URLs that 404 only because the PR
-hasn't merged yet:
+   Compare against the repo's known baseline — `docs/api/index.md` is already an orphan, and
+   the `.lycheeignore` TODO block suppresses links to files never copied. **New** problems are
+   yours to fix; pre-existing ones are out of scope (see `internal/design-docs-intake-skill.md`
+   §8).
 
-```bash
-node scripts/docs-intake/intake.mjs lycheeignore
-```
+   **Expect raw-URL 404s here for every brand-new asset.** A raw-`main` URL for a file this PR
+   just added cannot resolve until the PR merges — that is normal on this first pass, not a
+   failure. Do not stop for it and do not treat it as "check is clean."
 
-Exit `2` means a raw URL 404s with **no local file** backing it — the asset was never copied,
-and suppressing it would ship a broken image. Copy the asset first, or fix the ref; never
-suppress your way past this. List the lines it adds to delete after merge in the PR body.
+   - Auto-fixable lint: re-run with `--fix`, then re-run `check`.
+   - Any **other** unresolved problem (broken local link/embed, a real orphan, non-auto-fixable
+     lint): stop. Do not open a knowingly-red PR.
+
+2. **`lycheeignore`** — record the temporary suppressions for those expected 404s.
+
+   ```bash
+   node scripts/docs-intake/intake.mjs lycheeignore
+   ```
+
+   Exit `2` means a raw URL 404s with **no local file** backing it — the asset was never
+   copied, and suppressing it would ship a broken image. Copy the asset first, or fix the ref;
+   never suppress your way past this. List the lines it adds to delete after merge in the PR
+   body.
+
+3. **`check` (second pass).**
+
+   ```bash
+   node scripts/docs-intake/intake.mjs check
+   ```
+
+   This run must now be clean apart from the documented pre-existing baseline. If a raw-URL
+   failure remains here, it is not the expected first-pass kind — treat it as a real problem
+   and stop.
 
 ## Stage 5 — Ship
 

@@ -15,6 +15,10 @@ export const SKIP_AT_ROOT = new Set(['README.md', 'Thumbs.db', '.DS_Store']);
 
 const MARKDOWN = /\.md$/i;
 
+// index.md is the per-section landing-page convention (CONTRIBUTING.md), so it is
+// SUPPOSED to recur. Basename collision carries no signal for it.
+const COLLISION_EXEMPT = new Set(['index.md']);
+
 export async function walk(dir, base = dir) {
   const out = [];
   let entries;
@@ -44,6 +48,7 @@ export function sectionOfDest(destRelPath) {
 
 export async function collisionsFor(repoRoot, destRelPath) {
   const base = path.basename(destRelPath).toLowerCase();
+  if (COLLISION_EXEMPT.has(base)) return [];
   const pages = (await walk(path.join(repoRoot, 'docs'))).filter((p) => MARKDOWN.test(p));
   return pages
     .filter((p) => path.basename(p).toLowerCase() === base && p !== destRelPath)
@@ -86,6 +91,13 @@ export async function plan({ repoRoot }) {
       stops.push({
         source,
         reason: `"${path.basename(destRelPath)}" already exists elsewhere in docs/ (${collisions.join(', ')}) - confirm whether this updates one of those pages before creating a duplicate.`,
+      });
+    }
+
+    if (!isMarkdown && classification === 'UPDATE') {
+      stops.push({
+        source,
+        reason: `"${path.basename(destRelPath)}" already exists at docs/${destRelPath} - a dropped asset must not overwrite published artwork; rename it, or confirm it is the same image.`,
       });
     }
 

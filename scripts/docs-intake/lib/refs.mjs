@@ -3,7 +3,12 @@
 // kebab-cased to match on-disk names), and use{file=...} embeds (must survive an
 // update untouched).
 
-import { RAW_BASE, kebabCase, assetDest } from './paths.mjs';
+import { RAW_BASE, kebabCase, assetDest, STRUCTURAL_ROOT_FILES } from './paths.mjs';
+
+// STRUCTURAL_ROOT_FILES deliberately excludes Summary.md so a *dropped* Summary.md
+// still stops (see paths.mjs toDestination). A *link* to Summary.md must still never
+// be kebab-cased, so this local set unions it back in for kebabLinkTargets only.
+const STRUCTURAL_LINK_TARGETS = new Set([...STRUCTURAL_ROOT_FILES, 'Summary.md']);
 
 // The target group is lazy and space-tolerant ([^)]*? not [^)\s]+): source-repo
 // markdown routinely carries unencoded spaces ("./images/Run Dialog.png"), and those
@@ -73,6 +78,7 @@ export function kebabLinkTargets(markdown) {
     // Only .md is normalized: .cs/.py source filenames are referenced verbatim.
     if (!/\.md$/i.test(pathPart)) return raw;
     if (pathPart.split('/').includes('samples')) return raw;
+    if (STRUCTURAL_LINK_TARGETS.has(pathPart.split('/').pop())) return raw;
 
     const next =
       pathPart
