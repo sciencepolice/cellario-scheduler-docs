@@ -13,6 +13,13 @@ import { fileURLToPath } from 'node:url';
 import { readFile, writeFile } from 'node:fs/promises';
 import { rewriteImageRefs, kebabLinkTargets, plumbingReport } from './lib/refs.mjs';
 import { plan, sectionOfDest } from './lib/manifest.mjs';
+import {
+  runLint,
+  checkLocalRefs,
+  collectRawUrls,
+  headCheck,
+  checkOrphans,
+} from './lib/validate.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = path.resolve(HERE, '..', '..');
@@ -139,6 +146,39 @@ async function main(argv) {
       console.log('  no changes');
     }
     return EXIT.OK;
+  }
+
+  if (command === 'check') {
+    const lint = runLint(flags.repoRoot, { fix: flags.fix });
+    const brokenRefs = await checkLocalRefs(flags.repoRoot);
+    const rawUrls = await collectRawUrls(flags.repoRoot);
+    const rawFailures = await headCheck(rawUrls);
+    const orphanPages = await checkOrphans(flags.repoRoot);
+
+    const result = {
+      lint: { ok: lint.ok, output: lint.output },
+      brokenRefs,
+      rawUrlsChecked: rawUrls.length,
+      rawFailures,
+      orphans: orphanPages,
+    };
+
+    if (flags.json) {
+      console.log(JSON.stringify(result, null, 2));
+    } else {
+      console.log(`lint: ${lint.ok ? 'PASS' : 'FAIL'}`);
+      if (!lint.ok) console.log(lint.output);
+      console.log(`broken links/embeds: ${brokenRefs.length}`);
+      for (const b of brokenRefs) console.log(`  ${b.page} [${b.kind}] -> ${b.target}`);
+      console.log(`raw URLs checked: ${rawUrls.length}, failures: ${rawFailures.length}`);
+      for (const f of rawFailures) console.log(`  ${f.status} ${f.url}`);
+      console.log(`orphans (on disk, absent from Summary.md): ${orphanPages.length}`);
+      for (const o of orphanPages) console.log(`  ${o}`);
+    }
+
+    const clean =
+      lint.ok && !brokenRefs.length && !rawFailures.length && !orphanPages.length;
+    return clean ? EXIT.OK : EXIT.VALIDATION;
   }
 
   console.error(command ? `Unknown command: ${command}` : 'No command given.');
