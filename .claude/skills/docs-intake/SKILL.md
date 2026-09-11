@@ -68,12 +68,17 @@ call** — ask which page it updates rather than creating a near-duplicate.
 
 ## Stage 3 — Wire the nav (one write)
 
-For each `NEW` page, append `- [Title](path)` to the end of its group in `docs/Summary.md`.
-The group comes from the most-specific directory prefix among existing entries. **If the
-group is ambiguous, stop and ask** — `api/api/` genuinely is, because `examples-overview.md`
-sits there but is listed under **API Examples**.
+```bash
+node scripts/docs-intake/intake.mjs wire-nav <dest>...
+```
 
-`UPDATE` pages need no nav change.
+Pass every `NEW` page's destination path in one call. The command finds each page's group from
+the most-specific directory prefix among existing `Summary.md` entries and appends
+`- [Title](path)` to it. Exit `2` means a nav group is ambiguous — `api/api/` genuinely is,
+because `examples-overview.md` sits there but is listed under **API Examples** — nothing is
+written in that case, and the human chooses the group.
+
+`UPDATE` pages need no nav change; don't pass them.
 
 ## Stage 4 — Validate (one write)
 
@@ -87,15 +92,25 @@ to fix; pre-existing ones are out of scope (see `internal/design-docs-intake-ski
 
 - Auto-fixable lint: re-run with `--fix`, then `check` again.
 - Anything else unresolved: stop. Do not open a knowingly-red PR.
-- For each brand-new asset, append a commented temporary `.lycheeignore` entry — a raw-`main`
-  URL 404s until the PR merges. List the lines to delete after merge in the PR body.
+
+Once `check` is clean, suppress the brand-new raw-`main` URLs that 404 only because the PR
+hasn't merged yet:
+
+```bash
+node scripts/docs-intake/intake.mjs lycheeignore
+```
+
+Exit `2` means a raw URL 404s with **no local file** backing it — the asset was never copied,
+and suppressing it would ship a broken image. Copy the asset first, or fix the ref; never
+suppress your way past this. List the lines it adds to delete after merge in the PR body.
 
 ## Stage 5 — Ship
 
+1. Empty `_inbox/` — delete everything under it **except `README.md`** — before committing.
+
 ```bash
-git checkout -b docs/intake-$(date +%Y-%m-%d)
+git checkout -b docs/intake-YYYY-MM-DD   # substitute today's date
 git add docs/ .lycheeignore
-git rm -r --cached _inbox 2>/dev/null || true
 git commit -F <commit message file>
 gh auth switch --hostname github.com --user sciencepolice
 git push -u origin HEAD
@@ -103,9 +118,8 @@ gh pr create --base main --title "..." --body-file <body file>
 gh auth switch --hostname github.com --user dstugan_hrbs
 ```
 
-Empty `_inbox/` (leaving `README.md`) before committing. Pushing **requires** the
-`sciencepolice` account — the `dstugan_hrbs` EMU account can never have access to this repo.
-Switch back afterward.
+Pushing **requires** the `sciencepolice` account — the `dstugan_hrbs` EMU account can never
+have access to this repo. Switch back to `dstugan_hrbs` afterward.
 
 The PR body must carry: a table of every file with classification and destination, every
 judgment call made, every large deletion flagged in stage 2, and the `.lycheeignore` lines to
@@ -120,6 +134,7 @@ remove after merge.
 | Target directory's nav group is ambiguous | Misfiles the page in the portal nav. |
 | Dirty tree or not on `main` | Mixes unrelated work into the intake PR. |
 | Non-auto-fixable lint or unresolvable link | Prevents a knowingly-red PR. |
+| An incoming image's destination already exists | Assets are keyed by basename; copying over it would silently overwrite a different page's live artwork. Rename the incoming file or confirm it's the same image — never overwrite. |
 
 ## Tests
 

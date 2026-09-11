@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { rewriteImageRefs, kebabLinkTargets, plumbingReport } from './lib/refs.mjs';
-import { plan, sectionOfDest, titleFromMarkdown } from './lib/manifest.mjs';
+import { plan, sectionOfDest, titleFromMarkdown, walk } from './lib/manifest.mjs';
 import { parseSummary, groupForDirectory, appendEntry } from './lib/summary.mjs';
 import {
   runLint,
@@ -128,9 +128,14 @@ async function main(argv) {
       preservedImages = merged.preservedImages;
     }
 
+    const assetsDir = path.join(flags.repoRoot, 'docs', 'assets');
+    const existingAssets = new Set(
+      (await walk(assetsDir)).map((p) => `assets/${p}`),
+    );
+
     const images = section
-      ? rewriteImageRefs(before, { section })
-      : { text: before, rewritten: [], assets: [] };
+      ? rewriteImageRefs(before, { section, existingAssets })
+      : { text: before, rewritten: [], assets: [], collisions: [] };
     const links = kebabLinkTargets(images.text);
 
     if (!flags.dryRun && links.text !== original) await writeFile(abs, links.text, 'utf8');
@@ -141,6 +146,10 @@ async function main(argv) {
     for (const r of links.rewritten) console.log(`  link:  ${r.from} -> ${r.to}`);
     for (const a of images.assets) {
       console.log(`  copy asset: ${a.sourceBasename} -> docs/${a.destRelPath}`);
+    }
+    for (const c of images.collisions) {
+      console.log(`  ASSET COLLISION - do NOT copy over the live file: ${c.sourceBasename} -> docs/${c.destRelPath}`);
+      console.log('    rename the incoming file, or confirm it is the same image, before copying.');
     }
     for (const e of droppedEmbeds) {
       console.log(`  re-place embed (yours to position): ${e.file}`);

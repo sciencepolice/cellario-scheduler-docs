@@ -65,6 +65,29 @@ test('kebabLinkTargets normalizes .md links only', () => {
   assert.equal(rewritten.length, 2);
 });
 
+test('rewriteImageRefs flags an asset whose destination already exists', () => {
+  const md = '![Overview](./images/Overview.png)\n\n![Fresh](./images/brand-new.png)';
+  const existingAssets = new Set(['assets/images/user-guide/overview.png']);
+  const { rewritten, assets, collisions } = rewriteImageRefs(md, {
+    section: 'user-guide',
+    existingAssets,
+  });
+
+  assert.deepEqual(collisions, [
+    { sourceBasename: 'Overview.png', destRelPath: 'assets/images/user-guide/overview.png' },
+  ]);
+  assert.equal(assets.length, 1, 'only the non-colliding asset is queued for copying');
+  assert.equal(assets[0].sourceBasename, 'brand-new.png');
+  assert.equal(rewritten.length, 2, 'both URLs are still rewritten');
+});
+
+test('rewriteImageRefs without existingAssets behaves exactly as before', () => {
+  const md = '![A](./images/a.png)';
+  const { assets, collisions } = rewriteImageRefs(md, { section: 'user-guide' });
+  assert.equal(assets.length, 1);
+  assert.deepEqual(collisions, []);
+});
+
 test('plumbingReport carries raw image URLs over and reports dropped embeds', () => {
   const existing = [
     '# Hello World',

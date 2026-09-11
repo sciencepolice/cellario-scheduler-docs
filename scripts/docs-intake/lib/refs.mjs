@@ -37,9 +37,10 @@ export function extractRefs(markdown) {
   };
 }
 
-export function rewriteImageRefs(markdown, { section }) {
+export function rewriteImageRefs(markdown, { section, existingAssets = null }) {
   const rewritten = [];
   const assets = [];
+  const collisions = [];
 
   const text = markdown.replace(IMAGE_RE, (raw, alt, target, title) => {
     if (isExternal(target)) return raw;
@@ -47,11 +48,18 @@ export function rewriteImageRefs(markdown, { section }) {
     const destRelPath = assetDest(section, sourceBasename);
     const url = `${RAW_BASE}docs/${destRelPath}`;
     rewritten.push({ from: target, to: url });
-    assets.push({ sourceBasename, destRelPath });
+
+    // Assets are keyed by basename, so a generic name (overview.png, settings.png)
+    // can compute the destination of a DIFFERENT page's published image. Copying
+    // over it would silently replace live artwork and check() cannot see it, because
+    // the URL still resolves. Report instead of queueing the copy.
+    if (existingAssets?.has(destRelPath)) collisions.push({ sourceBasename, destRelPath });
+    else assets.push({ sourceBasename, destRelPath });
+
     return `![${alt}](${url}${title ?? ''})`;
   });
 
-  return { text, rewritten, assets };
+  return { text, rewritten, assets, collisions };
 }
 
 export function kebabLinkTargets(markdown) {
