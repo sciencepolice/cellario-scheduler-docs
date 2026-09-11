@@ -86,6 +86,15 @@ changes take effect on the next sync; when the tree was previously built wrong, 
    auto-checked — double-check those by hand.)
 5. Get review (see `.github/CODEOWNERS`) and merge. Archbee syncs on push to `main`.
 
+### Automated intake
+
+For a batch of files copied from a source repo, drop them into `_inbox/` mirroring the `docs/`
+tree and ask Claude Code to run the intake. The `docs-intake` skill
+(`.claude/skills/docs-intake/SKILL.md`) applies the structure rules above, wires new pages
+into `Summary.md`, validates locally, and opens the PR. It stops and asks whenever a section
+or nav group is ambiguous rather than guessing. Design notes:
+`internal/design-docs-intake-skill.md`.
+
 ## Images (GitHub-hosted)
 
 Images live in `docs/assets/images/<section>/` and are referenced by **raw GitHub URL** so
