@@ -3,10 +3,6 @@
 - [Introduction](Introduction.md)
 - [What's New](whats-new.md)
 
-## User Guide
-
-- [Overview](user-guide/index.md)
-
 ## API Reference
 
 - [Overview](api/api/overview.md)
