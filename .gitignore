@@ -1,0 +1,12 @@
+# Raw content drops for the docs-intake skill (.claude/skills/docs-intake).
+# Files here are staged, never tracked: the skill normalizes them into docs/ and
+# empties the folder as part of its run. The README is the one tracked exception.
+_inbox/*
+!_inbox/README.md
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+
+# Subagent-driven-development scratch (briefs, reports, review packages, ledger).
+.superpowers/
