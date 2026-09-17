@@ -1,6 +1,7 @@
 # Table of contents
 
 - [Introduction](Introduction.md)
+- [What's New](whats-new.md)
 
 ## User Guide
 
